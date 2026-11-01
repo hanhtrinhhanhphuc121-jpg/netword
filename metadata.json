@@ -1,0 +1,8 @@
+{
+  "name": "Remix NETWORD - Từ điển ngôn ngữ mạng THPT",
+  "description": "Từ điển ngôn ngữ trên không gian mạng dành cho học sinh THPT (Chuyên đề 2 - Ngữ văn 11). GV phát triển: Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
