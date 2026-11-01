@@ -4,7 +4,7 @@
  * GV phát triển: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ExpressionContext,
   ExpressionAnalysisResult,
@@ -50,6 +50,23 @@ export const AppropriateExpressionView: React.FC<AppropriateExpressionViewProps>
   const [loading, setLoading] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
   const [analysisMode, setAnalysisMode] = useState<'rules' | 'ai'>('rules');
+
+  useEffect(() => {
+    try {
+      const prefill = sessionStorage.getItem('netword_prefill_expression');
+      if (prefill) {
+        sessionStorage.removeItem('netword_prefill_expression');
+        setInputText(prefill);
+        const sample = SAMPLE_PROMPTS.find((s) => s.sentence === prefill);
+        const ctx = sample ? sample.suggestedContext : 'friend_chat';
+        setSelectedContext(ctx);
+        const res = analyzeAppropriateExpression(prefill, ctx);
+        setAnalysisResult(res);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
 
   const contextIcons: Record<ExpressionContext, React.ReactNode> = {
     friend_chat: <Users className="w-5 h-5" />,
@@ -110,7 +127,7 @@ export const AppropriateExpressionView: React.FC<AppropriateExpressionViewProps>
               Chuyên đề 2 – Ngữ văn 11
             </span>
             <span className="text-xs bg-indigo-900/60 text-indigo-100 px-2.5 py-1 rounded-full border border-indigo-400/30 font-medium">
-              GV: Thầy Trầm Thanh Tuấn – THCS & THPT Long Hiệp
+              GV: Thầy Trầm Thanh Tuấn – THCS và THPT Long Hiệp
             </span>
           </div>
 
@@ -125,16 +142,19 @@ export const AppropriateExpressionView: React.FC<AppropriateExpressionViewProps>
             </strong>
           </p>
 
-          <div className="pt-2 flex flex-wrap gap-2 text-xs text-indigo-200">
+          <div className="pt-2 flex flex-wrap items-center gap-2 text-xs text-indigo-200">
             <span className="flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg">
               <Check className="w-3.5 h-3.5 text-emerald-300" /> Giữ nguyên ý nghĩa câu gốc
             </span>
             <span className="flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg">
-              <Check className="w-3.5 h-3.5 text-emerald-300" /> Căn cứ từ điển & quy tắc đã duyệt
+              <Check className="w-3.5 h-3.5 text-emerald-300" /> Căn cứ từ điển và quy tắc đã duyệt
             </span>
-            <span className="flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-lg">
-              <Check className="w-3.5 h-3.5 text-emerald-300" /> Gắn nhãn AI & kiểm soát nội dung
-            </span>
+            <button
+              onClick={() => onNavigate('curriculum')}
+              className="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3 py-1 rounded-lg transition shadow-sm cursor-pointer"
+            >
+              <BookOpen className="w-3.5 h-3.5" /> Khám phá 4 Nhóm Ngữ liệu CĐ2
+            </button>
           </div>
         </div>
 
@@ -144,7 +164,7 @@ export const AppropriateExpressionView: React.FC<AppropriateExpressionViewProps>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Cột trái: Khối nhập liệu & Chọn ngữ cảnh (7 cột) */}
+        {/* Cột trái: Khối nhập liệu và Chọn ngữ cảnh (7 cột) */}
         <div className="lg:col-span-7 space-y-6">
           {/* Bước 1: Nhập câu */}
           <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">

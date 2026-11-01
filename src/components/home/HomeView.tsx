@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { WordEntry, ActiveTab, WordCategory } from '../../types';
-import { CATEGORY_LABELS } from '../../data/initialWords';
+import { CATEGORY_LABELS, NETWORD_TOPIC_THEMES } from '../../data/initialWords';
 import { SearchBar } from '../ui/SearchBar';
 import { Card } from '../ui/Card';
 import {
@@ -23,6 +23,7 @@ import {
   Quote,
   Layers,
   Search,
+  Users,
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -83,13 +84,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* 1. HERO LEXICON STAGE: Prestigious Educational Hero           */}
       {/* ============================================================ */}
       <section className="relative overflow-hidden rounded-3xl bg-slate-900 dark:bg-slate-950 text-white border border-slate-800 shadow-2xl">
-        {/* Fine background geometric mesh & subtle ambient lights */}
+        {/* Fine background geometric mesh và subtle ambient lights */}
         <div className="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 p-6 sm:p-10 lg:p-12">
-          {/* Top brow: Academic Badge & Slogan */}
+          {/* Top brow: Academic Badge và Slogan */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-slate-800/80 mb-8">
             <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-indigo-300">
               <GraduationCap className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -103,7 +104,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-            {/* Left 7 Columns: Grand Editorial Headline & Search */}
+            {/* Left 7 Columns: Grand Editorial Headline và Search */}
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-3">
                 <span className="text-xs uppercase font-bold tracking-widest text-cyan-400">
@@ -124,7 +125,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {/* Research authorship attribution */}
               <div className="flex items-center gap-2 text-xs text-slate-400 pt-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                <span>Nghiên cứu & Biên soạn:</span>
+                <span>Nghiên cứu và Biên soạn:</span>
                 <span className="font-semibold text-white">Thầy Trầm Thanh Tuấn</span>
                 <span>·</span>
                 <span>Trường THCS và THPT Long Hiệp</span>
@@ -164,7 +165,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-xs sm:text-sm hover:opacity-95 shadow-lg shadow-indigo-950 transition flex items-center gap-2 cursor-pointer active:scale-95"
                 >
                   <BookOpen className="w-4 h-4" />
-                  <span>Tra cứu toàn bộ {words.length} mục từ</span>
+                  <span>Tra cứu {words.length} mục từ</span>
+                </button>
+
+                <button
+                  onClick={() => onNavigate('curriculum')}
+                  className="px-4 py-2.5 rounded-xl bg-purple-600/90 hover:bg-purple-600 text-white font-bold text-xs sm:text-sm border border-purple-400/40 transition flex items-center gap-2 cursor-pointer active:scale-95 shadow-md shadow-purple-950/30"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>4 Nhóm Ngữ Liệu CĐ2</span>
                 </button>
 
                 <button
@@ -172,7 +181,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/90 text-indigo-200 hover:text-white border border-slate-700 font-semibold text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer"
                 >
                   <ArrowRightLeft className="w-4 h-4 text-cyan-400" />
-                  <span>Trợ lý Diễn đạt phù hợp</span>
+                  <span>Diễn đạt phù hợp</span>
+                </button>
+
+                <button
+                  onClick={() => onNavigate('students')}
+                  className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/90 text-slate-200 hover:text-white border border-slate-700 font-semibold text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer"
+                >
+                  <Users className="w-4 h-4 text-emerald-400" />
+                  <span>Học sinh Lớp 11 (42 HS)</span>
                 </button>
               </div>
             </div>
@@ -194,7 +211,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     </span>
                   </div>
 
-                  {/* Word title & Phonetic */}
+                  {/* Word title và Phonetic */}
                   <div className="space-y-1">
                     <div className="flex items-baseline gap-3">
                       <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
@@ -289,7 +306,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ============================================================ */}
-      {/* 2. STATISTICAL RIBBON: Clean Typography & Key Metrics         */}
+      {/* 2. STATISTICAL RIBBON: Clean Typography và Key Metrics         */}
       {/* ============================================================ */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="flex items-center gap-4 py-4 px-5">
@@ -343,7 +360,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               Long Hiệp
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-              THCS & THPT Long Hiệp
+              THCS và THPT Long Hiệp
             </div>
           </div>
         </Card>
@@ -424,6 +441,61 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ============================================================ */}
+      {/* 3B. 12 THEMATIC GROUPS: 300 Official Curriculum Entries      */}
+      {/* ============================================================ */}
+      <section className="space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 flex items-center gap-1.5 mb-1">
+              <Layers className="w-3.5 h-3.5" />
+              Tài liệu chính thức: Chuyên đề 2 Ngữ văn 11
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+              12 Nhóm Chủ Đề (300 Mục từ chuẩn hóa)
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Biên soạn theo tài liệu chuẩn của Thầy Trầm Thanh Tuấn (THCS và THPT Long Hiệp), đầy đủ mã NW-0001 → NW-0300
+            </p>
+          </div>
+
+          <button
+            onClick={() => onNavigate('dictionary')}
+            className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 cursor-pointer shrink-0"
+          >
+            Mở toàn bộ 300 từ <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {NETWORD_TOPIC_THEMES.map((themeName, idx) => {
+            const count = words.filter((w) => w.topicTheme === themeName).length || 25;
+            return (
+              <button
+                key={themeName}
+                onClick={() => {
+                  onSearch(themeName);
+                  onNavigate('dictionary');
+                }}
+                className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500 text-left transition group cursor-pointer shadow-xs active:scale-95 flex flex-col justify-between space-y-2"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold text-slate-400 dark:text-slate-500">
+                    Nhóm {idx + 1}
+                  </span>
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300">
+                    {count} từ
+                  </span>
+                </div>
+                <h4 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-1">
+                  {themeName}
+                </h4>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/* 4. CONTEXT COMPARISON SHOWCASE: Slang vs. Polite Formal      */}
       {/* ============================================================ */}
       <section className="bg-gradient-to-br from-indigo-50/70 via-white to-purple-50/60 dark:from-slate-900 dark:via-indigo-950/20 dark:to-purple-950/20 p-6 sm:p-8 rounded-3xl border border-indigo-100 dark:border-indigo-900/60 shadow-sm space-y-6">
@@ -483,7 +555,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ============================================================ */}
-      {/* 5. 4 GOLDEN RULES: Ethical & Civil Communication             */}
+      {/* 5. 4 GOLDEN RULES: Ethical và Civil Communication             */}
       {/* ============================================================ */}
       <section className="bg-slate-900 dark:bg-slate-950 text-white rounded-3xl p-6 sm:p-8 lg:p-10 space-y-6 border border-slate-800">
         <div className="space-y-2">
@@ -495,7 +567,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             4 Nguyên tắc vàng khi sử dụng ngôn ngữ mạng
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
-            Khẩu hiệu xuyên suốt: <strong>“Hiểu đúng ngôn từ – Giao tiếp văn minh”</strong> do Thầy Trầm Thanh Tuấn đúc kết từ thực tiễn giảng dạy Chuyên đề 2 tại Trường THCS & THPT Long Hiệp.
+            Khẩu hiệu xuyên suốt: <strong>“Hiểu đúng ngôn từ – Giao tiếp văn minh”</strong> do Thầy Trầm Thanh Tuấn đúc kết từ thực tiễn giảng dạy Chuyên đề 2 tại Trường THCS và THPT Long Hiệp.
           </p>
         </div>
 
@@ -524,7 +596,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold text-sm">
               03
             </div>
-            <h4 className="font-bold text-sm text-white">Tôn trọng & Lịch sự</h4>
+            <h4 className="font-bold text-sm text-white">Tôn trọng và Lịch sự</h4>
             <p className="text-xs text-slate-300 leading-relaxed">
               Tránh xa những từ ngữ mang sắc thái miệt thị, bạo lực ngôn từ, công kích cá nhân hay biến tướng thành công cụ bắt nạt trên mạng.
             </p>
@@ -556,7 +628,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ============================================================ */}
-      {/* 6. CALL TO ACTION: Contribute & Research Hub                  */}
+      {/* 6. CALL TO ACTION: Contribute và Research Hub                  */}
       {/* ============================================================ */}
       <section className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl shadow-indigo-100 dark:shadow-none">
         <div className="space-y-2 max-w-xl text-center sm:text-left">

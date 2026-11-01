@@ -1,6 +1,6 @@
 /**
  * NETWORD - Bộ câu hỏi Thử thách ngôn ngữ (Chuyên đề 2 Ngữ văn 11)
- * GV phát triển & Thẩm định: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
+ * GV phát triển và Thẩm định: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  */
 
 import { ChallengeQuestionItem, LearningBadge } from '../types/challenges';
@@ -307,7 +307,7 @@ export const INITIAL_LEARNING_BADGES: LearningBadge[] = [
   {
     id: 'badge_weekly_hero',
     name: 'Chiến binh Thử thách Tuần',
-    description: 'Vượt qua bài thử thách định kỳ tuần của Trường THCS & THPT Long Hiệp.',
+    description: 'Vượt qua bài thử thách định kỳ tuần của Trường THCS và THPT Long Hiệp.',
     icon: 'Trophy',
     requirement: 'Hoàn thành bài Thử thách Tuần với số điểm trên 70/100',
     category: 'general',

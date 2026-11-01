@@ -95,7 +95,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
-  // DASHBOARD & AUDIT STATES (MỚI)
+  // DASHBOARD và AUDIT STATES (MỚI)
   const [timeFilter, setTimeFilter] = useState<TimeFilter>('all');
   const [classFilter, setClassFilter] = useState<ClassFilter>('all');
   const [metrics, setMetrics] = useState<DashboardMetrics | null>(null);
@@ -592,7 +592,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
           Bảng điều khiển Quản trị Tối cao (Thầy Trầm Thanh Tuấn)
         </div>
         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-          Hệ thống Quản trị & Giám sát Chuyên đề 2
+          Hệ thống Quản trị và Giám sát Chuyên đề 2
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
           Duyệt xuất bản, thống kê thực tế, quản lý tài khoản trường cấp, rà soát 12 tiêu chí bảo mật và xuất báo cáo sư phạm.
@@ -672,7 +672,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
             }`}
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Xuất báo cáo & CSV</span>
+            <span>Xuất báo cáo và CSV</span>
           </button>
 
           <button
@@ -684,7 +684,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
             }`}
           >
             <FileCode className="w-3.5 h-3.5" />
-            <span>13 Bảng & SQL</span>
+            <span>13 Bảng và SQL</span>
           </button>
 
           <button
@@ -954,14 +954,14 @@ export const AdminView: React.FC<AdminViewProps> = ({
         </Card>
       )}
 
-      {/* SECTION 2: SCHOOL-ISSUED ACCOUNTS & RECOVERY (MỚI) */}
+      {/* SECTION 2: SCHOOL-ISSUED ACCOUNTS và RECOVERY (MỚI) */}
       {activeSection === 'accounts' && (
         <Card className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
             <div>
               <h2 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                Quản lý Tài khoản Cấp phát & Khôi phục (Trường Long Hiệp)
+                Quản lý Tài khoản Cấp phát và Khôi phục (Trường Long Hiệp)
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 Thầy Trầm Thanh Tuấn quản lý danh sách học sinh, cấp tài khoản khối 11 và khôi phục mật khẩu học đường
@@ -1227,7 +1227,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
         </Card>
       )}
 
-      {/* SECTION 1: BẢNG ĐIỀU KHIỂN QUẢN TRỊ TỔNG QUAN (REAL METRICS & FILTERS) */}
+      {/* SECTION 1: BẢNG ĐIỀU KHIỂN QUẢN TRỊ TỔNG QUAN (REAL METRICS và FILTERS) */}
       {activeSection === 'dashboard' && (
         <div className="space-y-6 animate-in fade-in">
           {/* Demo Mode Notice for Admin Dashboard */}
@@ -1235,7 +1235,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
             <Info className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
             <div className="leading-relaxed">
               <span className="font-bold">Chế độ Dùng thử Ngoại tuyến (Demo Cục bộ - LocalStorage):</span>{' '}
-              Các chỉ số thống kê, lượt tra cứu, tỷ lệ hoàn thành thử thách và danh sách tài khoản dưới đây được tổng hợp từ dữ liệu mẫu và bộ nhớ trình duyệt máy này để phục vụ kiểm thử giao diện & quy trình sư phạm của Thầy Trầm Thanh Tuấn. Ứng dụng chưa kết nối cơ sở dữ liệu đám mây tập trung, không đồng bộ dữ liệu giữa nhiều tài khoản hay nhiều thiết bị.
+              Các chỉ số thống kê, lượt tra cứu, tỷ lệ hoàn thành thử thách và danh sách tài khoản dưới đây được tổng hợp từ dữ liệu mẫu và bộ nhớ trình duyệt máy này để phục vụ kiểm thử giao diện và quy trình sư phạm của Thầy Trầm Thanh Tuấn. Ứng dụng chưa kết nối cơ sở dữ liệu đám mây tập trung, không đồng bộ dữ liệu giữa nhiều tài khoản hay nhiều thiết bị.
             </div>
           </div>
 
@@ -1381,7 +1381,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
             </Card>
           </div>
 
-          {/* Row 1: Submissions Stages & Daily Lookups Timeline */}
+          {/* Row 1: Submissions Stages và Daily Lookups Timeline */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Tiến độ thẩm định đề xuất */}
             <Card className="p-5 space-y-4">
@@ -1556,7 +1556,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
             </Card>
           </div>
 
-          {/* Row 2: Aggregate Challenge Results & Top Searched Terms */}
+          {/* Row 2: Aggregate Challenge Results và Top Searched Terms */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Kết quả Thử thách tổng hợp (Không PII) */}
             <Card className="p-5 space-y-4">
@@ -1620,9 +1620,9 @@ export const AdminView: React.FC<AdminViewProps> = ({
               <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
                 <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
                   <Search className="w-4 h-4 text-blue-600" />
-                  Mục từ được tra cứu & quan tâm nhiều nhất
+                  Mục từ được tra cứu và quan tâm nhiều nhất
                 </h3>
-                <span className="text-[10px] text-slate-400 font-semibold">Theo lượt xem & tương tác</span>
+                <span className="text-[10px] text-slate-400 font-semibold">Theo lượt xem và tương tác</span>
               </div>
 
               <div className="space-y-2">
@@ -1675,13 +1675,13 @@ export const AdminView: React.FC<AdminViewProps> = ({
             </Card>
           </div>
 
-          {/* Row 3: Pending Feedback & Privacy Data Requests */}
+          {/* Row 3: Pending Feedback và Privacy Data Requests */}
           <Card className="p-5 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <div>
                 <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-amber-500" />
-                  Phản ánh & Yêu cầu dữ liệu cá nhân học sinh ({metrics?.pendingDataRequests.length ?? 0} đang chờ)
+                  Phản ánh và Yêu cầu dữ liệu cá nhân học sinh ({metrics?.pendingDataRequests.length ?? 0} đang chờ)
                 </h3>
                 <p className="text-[11px] text-slate-400">
                   Thầy Trầm Thanh Tuấn xử lý yêu cầu chỉnh sửa/xóa dữ liệu cá nhân học sinh (Right to be Forgotten)
@@ -1778,7 +1778,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
       {/* SECTION 2: RÀ SOÁT TOÀN DIỆN 12 TIÊU CHÍ (PRE-DEPLOYMENT AUDIT SUITE) */}
       {activeSection === 'audit_suite' && (
         <div className="space-y-6 animate-in fade-in">
-          {/* Header Card with Overall Status & Runner */}
+          {/* Header Card with Overall Status và Runner */}
           <Card className="p-5 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
               <div>
@@ -2038,14 +2038,14 @@ export const AdminView: React.FC<AdminViewProps> = ({
         </Card>
       )}
 
-      {/* SECTION 4: XUẤT BÁO CÁO CSV & TỔNG KẾT SƯ PHẠM */}
+      {/* SECTION 4: XUẤT BÁO CÁO CSV và TỔNG KẾT SƯ PHẠM */}
       {activeSection === 'export_reports' && (
         <div className="space-y-6 animate-in fade-in">
           <Card className="p-5 space-y-4">
             <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
               <h2 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <FileSpreadsheet className="w-5 h-5 text-teal-600" />
-                Trung tâm Xuất Báo cáo & Dữ liệu Nghiên cứu Chuyên đề 2
+                Trung tâm Xuất Báo cáo và Dữ liệu Nghiên cứu Chuyên đề 2
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 Xuất file CSV/Excel bảng số liệu tổng hợp không chứa dữ liệu cá nhân (PII) và báo cáo sư phạm chính thức cho giáo viên.
@@ -2094,12 +2094,12 @@ export const AdminView: React.FC<AdminViewProps> = ({
                     <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100">
                       Báo cáo Sư phạm Tổng kết Chuyên đề 2
                     </h3>
-                    <p className="text-[11px] text-slate-500">Đầy đủ phần đánh giá, đề xuất & chữ ký giáo viên</p>
+                    <p className="text-[11px] text-slate-500">Đầy đủ phần đánh giá, đề xuất và chữ ký giáo viên</p>
                   </div>
                 </div>
 
                 <p className="text-xs text-slate-600 dark:text-slate-400">
-                  Văn bản mẫu chuẩn mực nộp cho Tổ bộ môn Ngữ văn và Ban Giám hiệu trường THCS & THPT Long Hiệp tổng kết hiệu quả Chuyên đề 2.
+                  Văn bản mẫu chuẩn mực nộp cho Tổ bộ môn Ngữ văn và Ban Giám hiệu trường THCS và THPT Long Hiệp tổng kết hiệu quả Chuyên đề 2.
                 </p>
 
                 <div className="text-[11px] text-slate-500">
@@ -2173,7 +2173,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
         </div>
       )}
 
-      {/* SECTION 4: 13 TABLES & SQL MIGRATION */}
+      {/* SECTION 4: 13 TABLES và SQL MIGRATION */}
       {activeSection === 'sql_migrations' && (
         <div className="space-y-6">
           <Card className="space-y-4">
@@ -2219,7 +2219,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
             </div>
           </Card>
 
-          {/* SQL Viewer & Downloader */}
+          {/* SQL Viewer và Downloader */}
           <Card className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-3">
               <div className="flex flex-wrap gap-1.5">
@@ -2372,7 +2372,7 @@ export const AdminView: React.FC<AdminViewProps> = ({
               </div>
               <div>
                 <h2 className="text-base font-bold text-slate-900 dark:text-slate-100">
-                  Cơ sở dữ liệu & Triển khai Đám mây (Tùy chọn)
+                  Cơ sở dữ liệu và Triển khai Đám mây (Tùy chọn)
                 </h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
                   Trạng thái:{' '}

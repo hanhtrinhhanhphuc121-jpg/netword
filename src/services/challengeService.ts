@@ -271,7 +271,7 @@ class ChallengeService {
       if (saved) return JSON.parse(saved);
     } catch {}
 
-    // Dữ liệu khảo sát thực tế ban đầu từ các lớp khối 11 Trường THCS & THPT Long Hiệp
+    // Dữ liệu khảo sát thực tế ban đầu từ các lớp khối 11 Trường THCS và THPT Long Hiệp
     const seed: Array<{
       id: string;
       userId: string;
@@ -361,7 +361,7 @@ class ChallengeService {
       }
     }
 
-    // 5. Chiến binh thử thách tuần (mode === 'weekly' & >= 70%)
+    // 5. Chiến binh thử thách tuần (mode === 'weekly' và >= 70%)
     if (attempt.mode === 'weekly' && attempt.percentage >= 70) {
       const b = this.badges.find((item) => item.id === 'badge_weekly_hero');
       if (b && !b.isUnlocked) {

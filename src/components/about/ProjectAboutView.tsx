@@ -1,5 +1,5 @@
 /**
- * NETWORD - Trang Giới thiệu Dự án, Chia sẻ Mã QR & Cẩm nang Phát hành Học đường
+ * NETWORD - Trang Giới thiệu Dự án, Chia sẻ Mã QR và Cẩm nang Phát hành Học đường
  * Chuyên đề 2: Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại - Ngữ văn 11
  * GV phát triển: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  * 
@@ -104,7 +104,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/30 backdrop-blur-md text-xs font-bold text-emerald-200 border border-emerald-400/40">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
-              Bảo mật HTTPS & RLS 100%
+              Bảo mật HTTPS và RLS 100%
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/30 backdrop-blur-md text-xs font-bold text-purple-200 border border-purple-400/40">
               <Smartphone className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
           }`}
         >
           <QrCode className="w-3.5 h-3.5" />
-          <span>2. Đường dẫn & Mã QR</span>
+          <span>2. Đường dẫn và Mã QR</span>
         </button>
 
         <button
@@ -204,7 +204,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
           }`}
         >
           <Lock className="w-3.5 h-3.5" />
-          <span>6. Quyền riêng tư & Điều khoản</span>
+          <span>6. Quyền riêng tư và Điều khoản</span>
         </button>
 
         <button
@@ -216,7 +216,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
           }`}
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          <span>7. Sao lưu & Cập nhật</span>
+          <span>7. Sao lưu và Cập nhật</span>
         </button>
       </div>
 
@@ -226,7 +226,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
           <Card className="p-6 space-y-4">
             <h2 className="text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-blue-600" />
-              Bối cảnh & Ý nghĩa Sư phạm của Dự án NETWORD
+              Bối cảnh và Ý nghĩa Sư phạm của Dự án NETWORD
             </h2>
             <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
               Trong đời sống hiện đại, không gian mạng (mạng xã hội, diễn đàn, ứng dụng nhắn tin) đã trở thành một môi trường giao tiếp quan trọng của thanh thiếu niên. Học sinh THPT thường xuyên tiếp xúc và sáng tạo nên nhiều lớp từ ngữ mới: tiếng lóng Gen Z, từ mượn tiếng Anh, teencode và các biến thể hài hước.
@@ -265,7 +265,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
           <Card className="p-6 space-y-3">
             <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <GraduationCap className="w-4 h-4 text-indigo-600" />
-              Thông tin Tác giả & Đơn vị Nghiên cứu
+              Thông tin Tác giả và Đơn vị Nghiên cứu
             </h3>
             <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1 leading-relaxed">
               <p>• <strong>Giáo viên phát triển:</strong> Thầy Trầm Thanh Tuấn (Tổ bộ môn Ngữ văn)</p>
@@ -277,14 +277,14 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
         </div>
       )}
 
-      {/* SECTION 2: LIVE SHARE LINK & QR CODE */}
+      {/* SECTION 2: LIVE SHARE LINK và QR CODE */}
       {activeSection === 'share_qr' && (
         <div className="space-y-6 animate-in fade-in">
           <Card className="p-6 space-y-6">
             <div>
               <h2 className="text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <QrCode className="w-5 h-5 text-purple-600" />
-                Đường dẫn Phát hành & Mã QR Code Chia sẻ Thực tế
+                Đường dẫn Phát hành và Mã QR Code Chia sẻ Thực tế
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Sử dụng đường dẫn bảo mật HTTPS thực tế để chia sẻ cho học sinh quét qua điện thoại hoặc chiếu máy chiếu trong giờ học.
@@ -376,7 +376,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
         </div>
       )}
 
-      {/* SECTION 3: ADD TO HOME SCREEN & PWA GUIDE */}
+      {/* SECTION 3: ADD TO HOME SCREEN và PWA GUIDE */}
       {activeSection === 'install_pwa' && (
         <div className="space-y-6 animate-in fade-in">
           {/* Quick Action Install Card */}
@@ -531,7 +531,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
               <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">3</span>
-                Làm Bài Thử Thách & Tích Lũy Huy Hiệu Học Tập
+                Làm Bài Thử Thách và Tích Lũy Huy Hiệu Học Tập
               </h3>
               <p>
                 Mỗi tuần, Thầy Tuấn mở các bộ thử thách tình huống: ghép từ với nghĩa, thẩm định tin tức và nhận diện nguy cơ bạo lực ngôn từ. Đạt điểm cao sẽ giúp mở khóa các huy hiệu: <em>Sứ giả giao tiếp văn minh, Chuyên gia thẩm định tin cậy, Bậc thầy thích ứng ngữ cảnh</em>.
@@ -541,7 +541,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
               <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold text-xs">4</span>
-                Khảo Sát Thực Tế & Gửi Đề Xuất Từ Mới
+                Khảo Sát Thực Tế và Gửi Đề Xuất Từ Mới
               </h3>
               <p>
                 Khi phát hiện một từ ngữ mạng mới mẻ trong đời sống, học sinh vào tab <strong>Đề xuất từ</strong>, điền giải nghĩa, nguồn gốc và ví dụ ngữ cảnh cụ thể. Ban Biên tập học sinh và Thầy Tuấn sẽ thẩm định và đưa vào từ điển chính thức của trường.
@@ -557,7 +557,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
           <div>
             <h2 className="text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-amber-600" />
-              Cẩm nang Dành cho Thầy Trầm Thanh Tuấn & Giáo viên Quản trị
+              Cẩm nang Dành cho Thầy Trầm Thanh Tuấn và Giáo viên Quản trị
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Quy trình tổ chức dữ liệu, quản lý tài khoản trường cấp, khôi phục mật khẩu và giám sát báo cáo sư phạm Chuyên đề 2.
@@ -597,20 +597,20 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
                 4. Theo dõi thống kê thực tế và Xuất báo cáo nộp Tổ chuyên môn
               </h3>
               <p>
-                Tab <strong>Bảng điều khiển</strong> cung cấp số liệu thực tế về lượt tra cứu, tỷ lệ hoàn thành thử thách theo từng lớp. Thầy có thể chọn bộ lọc (7 ngày, 30 ngày, lớp 11A1-11A4) và bấm <strong>"Xuất file CSV"</strong> hoặc <strong>"Xuất Báo cáo Sư phạm (.txt)"</strong> để nộp Tổ chuyên môn Ngữ văn và Ban Giám hiệu trường THCS & THPT Long Hiệp.
+                Tab <strong>Bảng điều khiển</strong> cung cấp số liệu thực tế về lượt tra cứu, tỷ lệ hoàn thành thử thách theo từng lớp. Thầy có thể chọn bộ lọc (7 ngày, 30 ngày, lớp 11A1-11A4) và bấm <strong>"Xuất file CSV"</strong> hoặc <strong>"Xuất Báo cáo Sư phạm (.txt)"</strong> để nộp Tổ chuyên môn Ngữ văn và Ban Giám hiệu trường THCS và THPT Long Hiệp.
               </p>
             </div>
           </div>
         </Card>
       )}
 
-      {/* SECTION 6: PRIVACY POLICY & TERMS OF SERVICE */}
+      {/* SECTION 6: PRIVACY POLICY và TERMS OF SERVICE */}
       {activeSection === 'privacy_terms' && (
         <Card className="p-6 space-y-5 animate-in fade-in">
           <div>
             <h2 className="text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <Lock className="w-5 h-5 text-rose-600" />
-              Chính sách Quyền Riêng tư & Điều khoản Sử dụng Học đường
+              Chính sách Quyền Riêng tư và Điều khoản Sử dụng Học đường
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Cam kết bảo vệ dữ liệu học sinh THPT và quy định chuẩn mực ứng xử trên không gian số NETWORD.
@@ -644,13 +644,13 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
         </Card>
       )}
 
-      {/* SECTION 7: BACKUP & LIFECYCLE MAINTENANCE PLAN */}
+      {/* SECTION 7: BACKUP và LIFECYCLE MAINTENANCE PLAN */}
       {activeSection === 'backup_plan' && (
         <Card className="p-6 space-y-5 animate-in fade-in">
           <div>
             <h2 className="text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <RotateCcw className="w-5 h-5 text-teal-600" />
-              Kế hoạch Sao lưu Dữ liệu & Quy trình Cập nhật Ứng dụng
+              Kế hoạch Sao lưu Dữ liệu và Quy trình Cập nhật Ứng dụng
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Quy chuẩn bảo toàn dữ liệu Chuyên đề 2 và lộ trình nâng cấp hệ thống qua các năm học.
@@ -689,7 +689,7 @@ export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onNavigate }
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
               <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                3. Quy chuẩn Kiểm thử & Phát hành Bản cập nhật mới
+                3. Quy chuẩn Kiểm thử và Phát hành Bản cập nhật mới
               </h3>
               <p>
                 Trước mỗi lần phát hành bản cập nhật mới, quản trị viên bắt buộc phải chạy <strong>Bộ kiểm toán tự động 12 tiêu chí tiền triển khai</strong> để bảo đảm:

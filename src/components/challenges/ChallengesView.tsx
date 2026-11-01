@@ -1,7 +1,7 @@
 /**
  * NETWORD – Phân hệ "Thử thách ngôn ngữ"
  * Chuyên đề 2: Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại - Ngữ văn 11
- * GV phát triển & Thẩm định: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
+ * GV phát triển và Thẩm định: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  */
 
 import React, { useState, useEffect } from 'react';
@@ -81,7 +81,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
   const [startTime, setStartTime] = useState<number>(Date.now());
   const [latestAttempt, setLatestAttempt] = useState<ChallengeAttempt | null>(null);
 
-  // Danh sách huy hiệu & lịch sử
+  // Danh sách huy hiệu và lịch sử
   const [badges, setBadges] = useState<LearningBadge[]>([]);
   const [attempts, setAttempts] = useState<ChallengeAttempt[]>([]);
 
@@ -370,7 +370,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
               Thử thách Chuyên đề 2 – Ngữ văn 11
             </span>
             <span className="text-xs bg-indigo-900/60 text-indigo-100 px-2.5 py-1 rounded-full border border-indigo-400/30 font-medium">
-              Thầy Trầm Thanh Tuấn – THCS & THPT Long Hiệp
+              Thầy Trầm Thanh Tuấn – THCS và THPT Long Hiệp
             </span>
           </div>
 
@@ -382,12 +382,12 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
             Rèn luyện 5 năng lực ngôn ngữ: <strong>Nghĩa của từ, Ghép từ ngữ, Ngữ cảnh thích hợp, Thẩm định tin cậy và Phòng chống bạo lực mạng</strong>.
           </p>
 
-          {/* Cam kết bảo mật quyền riêng tư học đường & Lưu trữ cục bộ */}
+          {/* Cam kết bảo mật quyền riêng tư học đường và Lưu trữ cục bộ */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-amber-200 bg-black/20 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 max-w-2xl">
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4 text-amber-300 shrink-0" />
               <span>
-                <strong>Bảo mật riêng tư & Lưu trữ cục bộ:</strong> Điểm số và huy hiệu được lưu trên trình duyệt thiết bị này (LocalStorage). Không công khai bảng xếp hạng ra ngoài.
+                <strong>Bảo mật riêng tư và Lưu trữ cục bộ:</strong> Điểm số và huy hiệu được lưu trên trình duyệt thiết bị này (LocalStorage). Không công khai bảng xếp hạng ra ngoài.
               </span>
             </div>
             <span className="text-[10px] px-2 py-0.5 rounded-md bg-white/20 text-white font-mono self-start sm:self-auto shrink-0">
@@ -456,11 +456,11 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
           )}
         </div>
 
-        {/* Nút bật/tắt Đảo câu hỏi & Phương án */}
+        {/* Nút bật/tắt Đảo câu hỏi và Phương án */}
         {viewMode === 'quiz' && (
           <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800">
             <Shuffle className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-            <span>Đảo câu hỏi & đáp án:</span>
+            <span>Đảo câu hỏi và đáp án:</span>
             <button
               onClick={() => {
                 const nextVal = !shuffleEnabled;
@@ -541,7 +541,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
             })}
           </div>
 
-          {/* Thanh tiến trình & Điểm số phiên hiện tại */}
+          {/* Thanh tiến trình và Điểm số phiên hiện tại */}
           {activeQuestions.length > 0 && currentQ && (
             <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -742,7 +742,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-amber-500" />
                     <h4 className="font-bold text-sm text-indigo-950 dark:text-indigo-200">
-                      Lời giải thích & Nhận định sư phạm (Thầy Trầm Thanh Tuấn)
+                      Lời giải thích và Nhận định sư phạm (Thầy Trầm Thanh Tuấn)
                     </h4>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -873,7 +873,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
                 className="px-5 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold text-sm transition flex items-center gap-2 cursor-pointer"
               >
                 <History className="w-4 h-4 text-slate-500" />
-                Xem lịch sử & xem lại chi tiết
+                Xem lịch sử và xem lại chi tiết
               </button>
 
               <button
@@ -968,7 +968,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
               </div>
               <div className="space-y-1">
                 <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">
-                  Lưu trữ kết quả & Lịch sử học tập
+                  Lưu trữ kết quả và Lịch sử học tập
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Hiện bạn đang ở chế độ <strong>Khách vãng lai (Guest)</strong>. Đăng nhập bằng tài khoản học sinh Long Hiệp để lưu lịch sử làm bài, tích lũy điểm và mở khóa các huy hiệu học tập.
@@ -1050,7 +1050,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
       )}
 
       {/* ============================================================ */}
-      {/* VIEW 5: QUẢN LÝ BỘ CÂU HỎI (DÀNH CHO GIÁO VIÊN & BIÊN TẬP VIÊN) */}
+      {/* VIEW 5: QUẢN LÝ BỘ CÂU HỎI (DÀNH CHO GIÁO VIÊN và BIÊN TẬP VIÊN) */}
       {/* ============================================================ */}
       {viewMode === 'manage' && (currentUser.role === 'admin' || currentUser.role === 'editor') && (
         <div className="space-y-6">
@@ -1261,7 +1261,7 @@ export const ChallengesView: React.FC<ChallengesViewProps> = ({ onNavigate }) =>
                   </div>
 
                   <div>
-                    <label className="font-bold block mb-1">Lời giải thích & Nhận định sư phạm:</label>
+                    <label className="font-bold block mb-1">Lời giải thích và Nhận định sư phạm:</label>
                     <textarea
                       value={newQExplanation}
                       onChange={(e) => setNewQExplanation(e.target.value)}

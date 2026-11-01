@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../services/authContext';
 import { UserRole } from '../../types';
 import { ROLE_DEFINITIONS } from '../../services/rbacService';
+import { STUDENTS_LIST, ACTIVE_STUDENTS, StudentRecord } from '../../data/studentsList';
 import {
   X,
   LogIn,
@@ -16,6 +17,9 @@ import {
   User,
   GraduationCap,
   Info,
+  Search,
+  Check,
+  ArrowRight,
 } from 'lucide-react';
 
 export const AuthModal: React.FC = () => {
@@ -27,11 +31,14 @@ export const AuthModal: React.FC = () => {
     signUpWithEmail,
     requestPasswordReset,
     loginAsRole,
+    loginAsStudent,
+    currentUser,
   } = useAuth();
 
-  const [mode, setMode] = useState<'login' | 'register' | 'recovery' | 'quick_test'>(
-    authModalMode || 'login'
+  const [mode, setMode] = useState<'roster' | 'login' | 'register' | 'recovery' | 'quick_test'>(
+    'roster'
   );
+  const [rosterSearch, setRosterSearch] = useState('');
 
   // Form states
   const [emailInput, setEmailInput] = useState('');
@@ -101,7 +108,7 @@ export const AuthModal: React.FC = () => {
             </div>
             <div>
               <h3 className="font-black text-base text-slate-900 dark:text-slate-100">
-                Xác thực & Tài khoản NETWORD
+                Xác thực và Tài khoản NETWORD
               </h3>
               <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Chuyên đề 2 Ngữ văn 11 • THCS và THPT Long Hiệp
@@ -121,11 +128,25 @@ export const AuthModal: React.FC = () => {
         <div className="grid grid-cols-4 p-1.5 bg-slate-100 dark:bg-slate-800/80 text-[11px] font-bold border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">
           <button
             onClick={() => {
+              setMode('roster');
+              setErrorMessage(null);
+              setSuccessMessage(null);
+            }}
+            className={`py-1.5 rounded-lg transition cursor-pointer text-center ${
+              mode === 'roster'
+                ? 'bg-indigo-600 text-white shadow-xs'
+                : 'hover:text-slate-900 dark:hover:text-slate-100'
+            }`}
+          >
+            🎓 Lớp 11 (42 HS)
+          </button>
+          <button
+            onClick={() => {
               setMode('login');
               setErrorMessage(null);
               setSuccessMessage(null);
             }}
-            className={`py-1.5 rounded-lg transition cursor-pointer ${
+            className={`py-1.5 rounded-lg transition cursor-pointer text-center ${
               mode === 'login'
                 ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
                 : 'hover:text-slate-900 dark:hover:text-slate-100'
@@ -139,7 +160,7 @@ export const AuthModal: React.FC = () => {
               setErrorMessage(null);
               setSuccessMessage(null);
             }}
-            className={`py-1.5 rounded-lg transition cursor-pointer ${
+            className={`py-1.5 rounded-lg transition cursor-pointer text-center ${
               mode === 'register'
                 ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
                 : 'hover:text-slate-900 dark:hover:text-slate-100'
@@ -149,25 +170,11 @@ export const AuthModal: React.FC = () => {
           </button>
           <button
             onClick={() => {
-              setMode('recovery');
-              setErrorMessage(null);
-              setSuccessMessage(null);
-            }}
-            className={`py-1.5 rounded-lg transition cursor-pointer ${
-              mode === 'recovery'
-                ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
-                : 'hover:text-slate-900 dark:hover:text-slate-100'
-            }`}
-          >
-            Khôi phục
-          </button>
-          <button
-            onClick={() => {
               setMode('quick_test');
               setErrorMessage(null);
               setSuccessMessage(null);
             }}
-            className={`py-1.5 rounded-lg transition cursor-pointer ${
+            className={`py-1.5 rounded-lg transition cursor-pointer text-center ${
               mode === 'quick_test'
                 ? 'bg-indigo-600 text-white shadow-xs'
                 : 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-700'
@@ -181,8 +188,8 @@ export const AuthModal: React.FC = () => {
         <div className="mx-6 mt-4 p-3 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-[11px] text-amber-900 dark:text-amber-200 flex items-start gap-2.5">
           <Info className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
           <div className="leading-relaxed">
-            <span className="font-bold">Chế độ Dùng thử (Lưu trữ cục bộ):</span>{' '}
-            Hệ thống chưa kết nối cơ sở dữ liệu đám mây tập trung. Tài khoản đăng ký được lưu trên trình duyệt máy này. Thầy/học sinh có thể chọn tab <strong>"⚡ 4 Vai trò"</strong> để chuyển đổi nhanh tức thì mà không cần mật khẩu.
+            <span className="font-bold">Lớp 11 - THCS và THPT Long Hiệp:</span>{' '}
+            Học sinh có thể chọn tên của mình từ danh sách <strong>42 học sinh</strong> bên dưới để làm bài trắc nghiệm, lưu từ vựng và tham gia Chuyên đề 2.
           </div>
         </div>
 
@@ -199,6 +206,99 @@ export const AuthModal: React.FC = () => {
             <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
               <span>{successMessage}</span>
+            </div>
+          )}
+
+          {/* TAB 0: ROSTER QUICK PICK (42 HỌC SINH LONG HIỆP) */}
+          {mode === 'roster' && (
+            <div className="space-y-3">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+                <input
+                  type="text"
+                  value={rosterSearch}
+                  onChange={(e) => setRosterSearch(e.target.value)}
+                  placeholder="Gõ tên hoặc họ (vd: An, Bích, Dinh, Wane, Giàu)..."
+                  className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <div className="max-h-64 overflow-y-auto space-y-1.5 pr-1 divide-y divide-slate-100 dark:divide-slate-800">
+                {STUDENTS_LIST.filter((s) => {
+                  if (!rosterSearch.trim()) return true;
+                  const q = rosterSearch.toLowerCase();
+                  return (
+                    s.fullName.toLowerCase().includes(q) ||
+                    s.studentCode.toLowerCase().includes(q)
+                  );
+                }).map((student) => {
+                  const isCurrent = currentUser.name === student.fullName;
+                  const isTransferred = student.status === 'transferred';
+
+                  return (
+                    <button
+                      key={student.id}
+                      type="button"
+                      disabled={isTransferred}
+                      onClick={() => loginAsStudent(student.id)}
+                      className={`w-full text-left p-2.5 rounded-xl transition flex items-center justify-between group cursor-pointer ${
+                        isCurrent
+                          ? 'bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800'
+                          : isTransferred
+                          ? 'opacity-40 cursor-not-allowed bg-slate-50 dark:bg-slate-900'
+                          : 'hover:bg-slate-100 dark:hover:bg-slate-800/80 border border-transparent'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="text-[11px] font-bold text-slate-400 w-5 text-right shrink-0">
+                          {student.stt}
+                        </span>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <span
+                              className={`text-xs font-bold truncate ${
+                                isTransferred
+                                  ? 'line-through text-slate-400'
+                                  : 'text-slate-900 dark:text-slate-100'
+                              }`}
+                            >
+                              {student.fullName}
+                            </span>
+                            {student.role === 'editor' && (
+                              <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">
+                                BTV
+                              </span>
+                            )}
+                            {isTransferred && (
+                              <span className="text-[9px] text-amber-600 bg-amber-50 px-1.5 rounded">
+                                Đã chuyển
+                              </span>
+                            )}
+                          </div>
+                          <span className="text-[10px] text-slate-400 font-mono block">
+                            {student.studentCode} • {student.points} điểm
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="shrink-0 pl-2">
+                        {isCurrent ? (
+                          <span className="text-[11px] font-bold text-emerald-600 flex items-center gap-1">
+                            <Check className="w-3.5 h-3.5" />
+                            <span>Đang chọn</span>
+                          </span>
+                        ) : isTransferred ? (
+                          <span className="text-[10px] text-slate-400">Bảo lưu</span>
+                        ) : (
+                          <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                            Chọn <ArrowRight className="w-3 h-3" />
+                          </span>
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           )}
 

@@ -28,6 +28,8 @@ import { AdminView } from './components/admin/AdminView';
 import { RoleTestSuiteView } from './components/testing/RoleTestSuiteView';
 import { AppropriateExpressionView } from './components/expression/AppropriateExpressionView';
 import { ProjectAboutView } from './components/about/ProjectAboutView';
+import { StudentsView } from './components/students/StudentsView';
+import { CurriculumSectionsView } from './components/curriculum/CurriculumSectionsView';
 
 function AppContent() {
   const { currentUser } = useAuth();
@@ -143,6 +145,10 @@ function AppContent() {
           />
         )}
 
+        {activeTab === 'curriculum' && (
+          <CurriculumSectionsView onNavigate={handleNavigate} />
+        )}
+
         {activeTab === 'detail' && (
           <WordDetailView
             wordId={selectedWordId}
@@ -162,6 +168,10 @@ function AppContent() {
 
         {activeTab === 'expression' && (
           <AppropriateExpressionView onNavigate={handleNavigate} />
+        )}
+
+        {activeTab === 'students' && (
+          <StudentsView onNavigate={handleNavigate} />
         )}
 
         {activeTab === 'profile' && (
@@ -205,7 +215,7 @@ function AppContent() {
           )
         )}
 
-        {/* TAB: Project About, Share QR & Release Guide */}
+        {/* TAB: Project About, Share QR và Release Guide */}
         {activeTab === 'about' && (
           <ProjectAboutView onNavigate={handleNavigate} />
         )}
@@ -220,7 +230,7 @@ function AppContent() {
       {/* Offline Connectivity Notification Banner */}
       <OfflineBanner />
 
-      {/* Comprehensive School & Curriculum Footer */}
+      {/* Comprehensive School và Curriculum Footer */}
       <Footer onNavigate={handleNavigate} />
     </div>
   );

@@ -23,7 +23,7 @@ export const AccessDeniedView: React.FC<AccessDeniedViewProps> = ({
       case 'editor':
         return 'Bàn làm việc Ban Biên tập (Hội đồng Thẩm định)';
       case 'admin':
-        return 'Hệ thống Quản trị & Cơ sở dữ liệu (Thầy Tuấn)';
+        return 'Hệ thống Quản trị và Cơ sở dữ liệu (Thầy Tuấn)';
       default:
         return 'Khu vực giới hạn';
     }
@@ -97,10 +97,10 @@ export const AccessDeniedView: React.FC<AccessDeniedViewProps> = ({
           </button>
         </div>
 
-        {/* Quick Testing Switchers for Teachers & Evaluators */}
+        {/* Quick Testing Switchers for Teachers và Evaluators */}
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 space-y-2">
           <p className="font-semibold text-slate-500 dark:text-slate-400">
-            Dành cho Thầy Trầm Thanh Tuấn & Hội đồng khảo nghiệm (Chuyển nhanh tài khoản):
+            Dành cho Thầy Trầm Thanh Tuấn và Hội đồng khảo nghiệm (Chuyển nhanh tài khoản):
           </p>
           <div className="flex justify-center gap-2 flex-wrap">
             {requiredRoles.map((r) => (

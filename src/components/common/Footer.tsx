@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     <footer className="bg-slate-900 dark:bg-slate-950 text-slate-300 pt-12 pb-24 lg:pb-12 border-t border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
-          {/* Col 1: Project Info & Slogan */}
+          {/* Col 1: Project Info và Slogan */}
           <div className="space-y-3 md:col-span-1">
             <div
               onClick={() => onNavigate?.('about')}
@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </p>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-indigo-300">
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-              Công nghệ PWA & HTTPS Production
+              Công nghệ PWA và HTTPS Production
             </div>
           </div>
 
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          {/* Col 3: Principles & Pedagogical Note */}
+          {/* Col 3: Principles và Pedagogical Note */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-indigo-400" />
@@ -80,11 +80,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Col 4: Quick Links for Release & Guide */}
+          {/* Col 4: Quick Links for Release và Guide */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              Cẩm nang & Phát hành
+              Cẩm nang và Phát hành
             </h4>
             <ul className="text-xs space-y-2 text-slate-400">
               <li>
@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="hover:text-white transition flex items-center gap-1.5 cursor-pointer text-left"
                 >
                   <QrCode className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Đường dẫn HTTPS & Mã QR chia sẻ</span>
+                  <span>Đường dẫn HTTPS và Mã QR chia sẻ</span>
                 </button>
               </li>
               <li>

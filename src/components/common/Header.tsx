@@ -18,6 +18,7 @@ import {
   Sparkles,
   QrCode,
   ShieldAlert,
+  Users,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -31,10 +32,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate }) => {
   const navItems: { tab: ActiveTab; label: string; icon: React.ReactNode }[] = [
     { tab: 'home', label: 'Trang chủ', icon: <Compass className="w-3.5 h-3.5" /> },
     { tab: 'dictionary', label: 'Từ điển', icon: <BookOpen className="w-3.5 h-3.5" /> },
+    { tab: 'curriculum', label: 'Ngữ liệu CĐ2', icon: <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" /> },
     { tab: 'expression', label: 'Diễn đạt phù hợp', icon: <Sparkles className="w-3.5 h-3.5 text-amber-500" /> },
     { tab: 'challenges', label: 'Thử thách', icon: <Trophy className="w-3.5 h-3.5" /> },
+    { tab: 'students', label: 'Học sinh 11', icon: <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" /> },
     { tab: 'suggest', label: 'Đề xuất', icon: <PlusCircle className="w-3.5 h-3.5" /> },
-    { tab: 'about', label: 'Giới thiệu & QR', icon: <QrCode className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" /> },
+    { tab: 'about', label: 'Giới thiệu và QR', icon: <QrCode className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" /> },
     { tab: 'role_tests', label: 'Kiểm thử RBAC', icon: <ShieldAlert className="w-3.5 h-3.5" /> },
   ];
 
@@ -111,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate }) => {
             <KeyboardShortcutHelp />
             <ThemeToggle />
 
-            {/* Role Quick Switcher for Teacher & Testers */}
+            {/* Role Quick Switcher for Teacher và Testers */}
             <div className="hidden sm:flex items-center bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-xl border border-slate-200/80 dark:border-slate-700 text-xs">
               <select
                 aria-label="Chọn vai trò người dùng"

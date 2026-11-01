@@ -10,7 +10,7 @@ import { INITIAL_WORDS } from '../data/initialWords';
 import { normalizeTermClient } from './supabaseSchema';
 
 const STORAGE_KEYS = {
-  WORDS: 'netword_words_v1',
+  WORDS: 'netword_words_v3_300',
   SUGGESTIONS: 'netword_suggestions_v1',
   COMMENTS: 'netword_comments_v1',
   USER_PROFILE: 'netword_user_profile_v1',
@@ -112,7 +112,10 @@ function getStoredWords(): WordEntry[] {
   try {
     const stored = localStorage.getItem(STORAGE_KEYS.WORDS);
     if (stored) {
-      return JSON.parse(stored);
+      const parsed: WordEntry[] = JSON.parse(stored);
+      if (parsed && parsed.length >= INITIAL_WORDS.length) {
+        return parsed;
+      }
     }
   } catch (e) {
     console.error('Error reading words from storage', e);

@@ -84,7 +84,7 @@ export const EditorView: React.FC<EditorViewProps> = ({ onNavigate, onRefreshWor
           Hội đồng Thẩm định Ngôn ngữ
         </div>
         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-          Bàn làm việc Ban Biên tập & Tổ Ngữ văn
+          Bàn làm việc Ban Biên tập và Tổ Ngữ văn
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
           Kiểm duyệt đề xuất mục từ mới từ học sinh, viết nhận xét sư phạm và quyết định đưa vào từ điển
@@ -185,7 +185,7 @@ export const EditorView: React.FC<EditorViewProps> = ({ onNavigate, onRefreshWor
 
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1.5">
-              Ý kiến nhận xét & Lời khuyên sư phạm của Giáo viên/Ban biên tập:
+              Ý kiến nhận xét và Lời khuyên sư phạm của Giáo viên/Ban biên tập:
             </label>
             <textarea
               rows={3}
@@ -210,7 +210,7 @@ export const EditorView: React.FC<EditorViewProps> = ({ onNavigate, onRefreshWor
               className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold hover:opacity-95 transition cursor-pointer flex items-center gap-1.5 shadow-md shadow-indigo-100 dark:shadow-none"
             >
               <CheckCircle2 className="w-4 h-4" />
-              <span>Phê duyệt & Đưa vào Từ điển</span>
+              <span>Phê duyệt và Đưa vào Từ điển</span>
             </button>
           </div>
         </Card>

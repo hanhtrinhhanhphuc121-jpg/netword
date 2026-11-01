@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { WordEntry, ActiveTab, WordCategory, SchoolAppropriateness } from '../../types';
-import { CATEGORY_LABELS, APPROPRIATENESS_LABELS } from '../../data/initialWords';
+import { CATEGORY_LABELS, APPROPRIATENESS_LABELS, NETWORD_TOPIC_THEMES } from '../../data/initialWords';
 import { useAuth } from '../../services/authContext';
 import { SearchBar } from '../ui/SearchBar';
 import { Card } from '../ui/Card';
@@ -17,6 +17,7 @@ import {
   HelpCircle,
   Sparkles,
   BookOpen,
+  Layers,
 } from 'lucide-react';
 
 interface DictionaryViewProps {
@@ -43,8 +44,10 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
   const { isBookmarked, toggleBookmark } = useAuth();
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
+  const [selectedCurriculumSection, setSelectedCurriculumSection] = useState<string | null>(null);
+  const [selectedTopicTheme, setSelectedTopicTheme] = useState<string>('all');
   const [selectedAppropriateness, setSelectedAppropriateness] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<'latest' | 'popular' | 'alpha'>('popular');
+  const [sortBy, setSortBy] = useState<'latest' | 'popular' | 'alpha' | 'code'>('code');
   const [showFiltersMobile, setShowFiltersMobile] = useState(false);
   const [onlyBookmarks, setOnlyBookmarks] = useState(false);
 
@@ -71,6 +74,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
         // Tim truc tiep
         const rawMatch =
           w.word.toLowerCase().includes(rawQuery) ||
+          (w.officialCode && w.officialCode.toLowerCase().includes(rawQuery)) ||
+          (w.topicTheme && w.topicTheme.toLowerCase().includes(rawQuery)) ||
           w.netMeaning.toLowerCase().includes(rawQuery) ||
           w.literalMeaning.toLowerCase().includes(rawQuery) ||
           (w.pronunciation && w.pronunciation.toLowerCase().includes(rawQuery)) ||
@@ -83,6 +88,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
         // Tim khong dau
         const normMatch =
           normalize(w.word).includes(normQuery) ||
+          (w.officialCode && normalize(w.officialCode).includes(normQuery)) ||
+          (w.topicTheme && normalize(w.topicTheme).includes(normQuery)) ||
           normalize(w.netMeaning).includes(normQuery) ||
           normalize(w.literalMeaning).includes(normQuery) ||
           (w.origin && normalize(w.origin).includes(normQuery)) ||
@@ -97,6 +104,20 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
       result = result.filter((w) => w.category === selectedCategory);
     }
 
+    if (selectedTopicTheme !== 'all') {
+      result = result.filter((w) => w.topicTheme === selectedTopicTheme);
+    }
+
+    if (selectedCurriculumSection) {
+      if (selectedCurriculumSection === 'slang_common') {
+        result = result.filter((w) => w.tags && w.tags.includes('Tiếng lóng phổ biến'));
+      } else if (selectedCurriculumSection === 'abbreviations') {
+        result = result.filter((w) => w.tags && w.tags.includes('Từ viết tắt'));
+      } else if (selectedCurriculumSection === 'genz_slang') {
+        result = result.filter((w) => w.tags && w.tags.includes('Tiếng lóng Gen Z'));
+      }
+    }
+
     if (selectedAppropriateness !== 'all') {
       result = result.filter((w) => w.schoolAppropriateness === selectedAppropriateness);
     }
@@ -105,7 +126,9 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
       result = result.filter((w) => isBookmarked(w.id));
     }
 
-    if (sortBy === 'popular') {
+    if (sortBy === 'code') {
+      result.sort((a, b) => (a.stt || 0) - (b.stt || 0));
+    } else if (sortBy === 'popular') {
       result.sort((a, b) => (b.likesCount || 0) - (a.likesCount || 0));
     } else if (sortBy === 'latest') {
       result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -114,7 +137,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
     }
 
     return result;
-  }, [words, searchTerm, selectedCategory, selectedAppropriateness, sortBy, onlyBookmarks, isBookmarked]);
+  }, [words, searchTerm, selectedCategory, selectedTopicTheme, selectedCurriculumSection, selectedAppropriateness, sortBy, onlyBookmarks, isBookmarked]);
 
   // Goi y tu gan dung khi khong co ket qua
   const suggestedWords = useMemo(() => {
@@ -137,13 +160,13 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
   return (
     <div className="space-y-6 pb-16 animate-in fade-in duration-300">
       {/* ============================================================ */}
-      {/* 1. VIEW HEADER & ACTION                                      */}
+      {/* 1. VIEW HEADER và ACTION                                      */}
       {/* ============================================================ */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             <GraduationCap className="w-4 h-4" />
-            <span>Chuyên đề 2: Ngữ văn 11 · Trường THCS & THPT Long Hiệp</span>
+            <span>Chuyên đề 2: Ngữ văn 11 · Trường THCS và THPT Long Hiệp</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
             Từ điển ngôn ngữ không gian mạng
@@ -153,17 +176,27 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
           </p>
         </div>
 
-        <button
-          onClick={() => onNavigate('suggest')}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xs shadow-md shadow-indigo-100 dark:shadow-none hover:from-blue-700 hover:to-indigo-700 transition cursor-pointer self-start sm:self-auto active:scale-95"
-        >
-          <PlusCircle className="w-4 h-4" />
-          <span>Đề xuất từ mới</span>
-        </button>
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+          <button
+            onClick={() => onNavigate('curriculum')}
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 font-bold text-xs border border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/60 transition cursor-pointer active:scale-95 shadow-xs"
+          >
+            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <span>4 Nhóm Ngữ liệu CĐ2</span>
+          </button>
+
+          <button
+            onClick={() => onNavigate('suggest')}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xs shadow-md shadow-indigo-100 dark:shadow-none hover:from-blue-700 hover:to-indigo-700 transition cursor-pointer active:scale-95"
+          >
+            <PlusCircle className="w-4 h-4" />
+            <span>Đề xuất từ mới</span>
+          </button>
+        </div>
       </div>
 
       {/* ============================================================ */}
-      {/* 2. SEARCH & CONTROL TOOLBAR                                  */}
+      {/* 2. SEARCH và CONTROL TOOLBAR                                  */}
       {/* ============================================================ */}
       <Card className="space-y-4 p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row gap-3">
@@ -182,6 +215,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
               onChange={(e) => setSortBy(e.target.value as any)}
               className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold px-3 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 outline-none hover:bg-slate-100 dark:hover:bg-slate-700 transition cursor-pointer"
             >
+              <option value="code" className="dark:bg-slate-900">📋 STT (NW-0001 → NW-0300)</option>
               <option value="popular" className="dark:bg-slate-900">🔥 Phổ biến nhất</option>
               <option value="latest" className="dark:bg-slate-900">✨ Mới cập nhật</option>
               <option value="alpha" className="dark:bg-slate-900">🔤 Thứ tự A - Z</option>
@@ -220,6 +254,91 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
             showFiltersMobile ? 'block' : 'hidden'
           } sm:block space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800`}
         >
+          {/* Quick Curriculum 4-Sections Filter */}
+          <div className="flex flex-wrap items-center gap-1.5 p-2 rounded-xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200/80 dark:border-purple-900/60 text-xs">
+            <span className="text-[11px] font-bold text-purple-700 dark:text-purple-300 mr-1 uppercase tracking-wider flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+              Chuyên đề 2:
+            </span>
+            <button
+              onClick={() => setSelectedCurriculumSection(null)}
+              className={`px-2.5 py-1 rounded-lg font-medium transition cursor-pointer ${
+                selectedCurriculumSection === null
+                  ? 'bg-purple-700 text-white font-bold shadow-xs'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-purple-950'
+              }`}
+            >
+              Tất cả từ điển
+            </button>
+            <button
+              onClick={() => setSelectedCurriculumSection('slang_common')}
+              className={`px-2.5 py-1 rounded-lg font-medium transition cursor-pointer ${
+                selectedCurriculumSection === 'slang_common'
+                  ? 'bg-indigo-600 text-white font-bold shadow-xs'
+                  : 'bg-white dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-slate-700'
+              }`}
+            >
+              📌 1. Tiếng lóng (20)
+            </button>
+            <button
+              onClick={() => setSelectedCurriculumSection('abbreviations')}
+              className={`px-2.5 py-1 rounded-lg font-medium transition cursor-pointer ${
+                selectedCurriculumSection === 'abbreviations'
+                  ? 'bg-emerald-600 text-white font-bold shadow-xs'
+                  : 'bg-white dark:bg-slate-800 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-700'
+              }`}
+            >
+              ⚡ 2. Viết tắt (16)
+            </button>
+            <button
+              onClick={() => setSelectedCurriculumSection('genz_slang')}
+              className={`px-2.5 py-1 rounded-lg font-medium transition cursor-pointer ${
+                selectedCurriculumSection === 'genz_slang'
+                  ? 'bg-purple-600 text-white font-bold shadow-xs'
+                  : 'bg-white dark:bg-slate-800 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-slate-700'
+              }`}
+            >
+              🔥 3. Lóng Gen Z (20)
+            </button>
+            <button
+              onClick={() => onNavigate('curriculum')}
+              className="px-2.5 py-1 rounded-lg font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center gap-1 shadow-xs ml-auto"
+            >
+              💬 4. Câu MXH và Chi tiết <ArrowRight className="w-3 h-3" />
+            </button>
+          </div>
+
+          {/* 12 Nhóm Chủ Đề Chuyên Đề 2 (300 từ) */}
+          <div className="flex flex-wrap items-center gap-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-xs">
+            <span className="text-[11px] font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-wider flex items-center gap-1 shrink-0">
+              <Layers className="w-3.5 h-3.5 text-indigo-500" />
+              12 Nhóm chủ đề:
+            </span>
+            <select
+              value={selectedTopicTheme}
+              onChange={(e) => setSelectedTopicTheme(e.target.value)}
+              className="flex-1 min-w-[200px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg text-slate-800 dark:text-slate-200 outline-none hover:border-indigo-400 transition cursor-pointer"
+            >
+              <option value="all">Tất cả 12 nhóm chủ đề (300 từ)</option>
+              {NETWORD_TOPIC_THEMES.map((theme, idx) => {
+                const count = words.filter((w) => w.topicTheme === theme).length;
+                return (
+                  <option key={theme} value={theme}>
+                    {idx + 1}. {theme} ({count} từ)
+                  </option>
+                );
+              })}
+            </select>
+            {selectedTopicTheme !== 'all' && (
+              <button
+                onClick={() => setSelectedTopicTheme('all')}
+                className="text-xs text-rose-600 dark:text-rose-400 font-bold hover:underline cursor-pointer px-1 shrink-0"
+              >
+                ✕ Đặt lại
+              </button>
+            )}
+          </div>
+
           {/* Category filter */}
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 mr-1 uppercase tracking-wider">
@@ -401,6 +520,8 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
               onClick={() => {
                 setSearchTerm('');
                 setSelectedCategory('all');
+                setSelectedTopicTheme('all');
+                setSelectedCurriculumSection(null);
                 setSelectedAppropriateness('all');
                 setOnlyBookmarks(false);
               }}
@@ -448,7 +569,12 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                   {/* Top: Word, Pronunciation, Unboxed Metadata, Bookmark */}
                   <div className="flex items-start justify-between gap-3">
                     <div className="space-y-1">
-                      <div className="flex items-baseline gap-2.5">
+                      <div className="flex items-baseline gap-2 flex-wrap">
+                        {item.officialCode && (
+                          <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shrink-0">
+                            {item.officialCode}
+                          </span>
+                        )}
                         <h3
                           onClick={() => onNavigate('detail', item.id)}
                           className="text-2xl font-black text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition cursor-pointer tracking-tight"
@@ -464,6 +590,14 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
 
                       {/* ZERO-PILL METADATA: Clean typography separated by bullet dot */}
                       <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                        {item.topicTheme && (
+                          <>
+                            <span className="font-semibold text-purple-700 dark:text-purple-300">
+                              {item.topicTheme}
+                            </span>
+                            <span>·</span>
+                          </>
+                        )}
                         <span className="font-semibold text-slate-700 dark:text-slate-300">
                           {cat.label}
                         </span>
@@ -509,7 +643,7 @@ export const DictionaryView: React.FC<DictionaryViewProps> = ({
                   </div>
                 </div>
 
-                {/* Bottom Card Bar: Stats & Detail Link */}
+                {/* Bottom Card Bar: Stats và Detail Link */}
                 <div className="flex items-center justify-between pt-4 mt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
                   <div className="flex items-center gap-3 text-slate-400 dark:text-slate-500">
                     <button

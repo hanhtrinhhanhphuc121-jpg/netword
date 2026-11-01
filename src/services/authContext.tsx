@@ -1,5 +1,5 @@
 /**
- * Context quản lý Tài khoản, Supabase Auth & Phân quyền RBAC (4 Vai trò)
+ * Context quản lý Tài khoản, Supabase Auth và Phân quyền RBAC (4 Vai trò)
  * - guest: Khách vãng lai (xem từ published, làm bài thử)
  * - student: Học sinh THPT (lưu từ, làm bài lưu điểm, gửi đề xuất)
  * - editor: Ban biên tập (xử lý nội dung được phân công)
@@ -10,6 +10,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { UserProfile, UserRole, PermissionAction } from '../types';
 import { dictionaryService, getActiveSupabaseClient } from './supabaseClient';
 import { hasPermission, ROLE_DEFINITIONS } from './rbacService';
+import { STUDENTS_LIST } from '../data/studentsList';
 
 interface AuthContextType {
   currentUser: UserProfile;
@@ -23,6 +24,7 @@ interface AuthContextType {
   hasPerm: (action: PermissionAction) => boolean;
   switchRole: (role: UserRole) => void;
   loginAsRole: (role: UserRole) => void;
+  loginAsStudent: (studentIdOrCode: string) => boolean;
   updateProfile: (profile: Partial<UserProfile>) => { success: boolean; error?: string };
   adminSetUserRole: (userId: string, newRole: UserRole) => Promise<{ success: boolean; error?: string }>;
   
@@ -38,7 +40,7 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   requestPasswordReset: (email: string) => Promise<{ success: boolean; message: string; error?: string }>;
 
-  // Gamification & Bookmarks
+  // Gamification và Bookmarks
   addPoints: (points: number, reason?: string) => void;
   recordSolvedChallenge: (challengeId: string, earnedPoints: number) => { success: boolean; earned: number; isGuest: boolean };
   bookmarks: string[];
@@ -68,35 +70,35 @@ export const PRESET_USERS: Record<UserRole, UserProfile> = {
     accountStatus: 'active',
   },
   student: {
-    id: 'user-std-01',
-    name: 'Nguyễn Văn Minh',
-    email: 'vanminh11a1@longhiep.edu.vn',
+    id: 'student-lh-11-001',
+    name: 'Thạch Minh An',
+    email: 'an.lh11001@longhiep.edu.vn',
     role: 'student',
     school: 'Trường THCS và THPT Long Hiệp',
-    grade: 'Lớp 11A1 (Chuyên đề 2)',
-    title: 'Học viên Ngôn ngữ Trẻ',
+    grade: 'Lớp 11 (Chuyên đề 2)',
+    title: 'Học viên Chuyên đề 2',
     points: 120,
     bookmarkedWordIds: ['11111111-1111-1111-1111-111111111111', '33333333-3333-3333-3333-333333333333'],
     solvedChallengeIds: ['99000000-0000-0000-0000-000000000001'],
     createdWordIds: [],
     isSchoolIssued: true,
-    studentCode: 'LH2026-11A1-001',
+    studentCode: 'LH-11-001',
     accountStatus: 'active',
   },
   editor: {
-    id: 'user-edt-01',
-    name: 'Lê Hoàng Ngọc Mai',
-    email: 'ngocmai.editor@longhiep.edu.vn',
+    id: 'student-lh-11-010',
+    name: 'Lâm Sơn Khánh Đông',
+    email: 'dong.lh11010@longhiep.edu.vn',
     role: 'editor',
     school: 'Trường THCS và THPT Long Hiệp',
-    grade: 'Lớp 11A2 (Ban Biên tập)',
-    title: 'Trưởng ban Thẩm định Ngôn ngữ',
+    grade: 'Lớp 11 (Chuyên đề 2)',
+    title: 'Trưởng ban Thẩm định Ngôn ngữ Lớp 11',
     points: 380,
     bookmarkedWordIds: ['11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222222', '55555555-5555-5555-5555-555555555555'],
     solvedChallengeIds: ['99000000-0000-0000-0000-000000000001'],
     createdWordIds: [],
     isSchoolIssued: true,
-    studentCode: 'LH2026-11A2-015',
+    studentCode: 'LH-11-010',
     accountStatus: 'active',
   },
   admin: {
@@ -217,7 +219,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return hasPermission(currentUser.role, action);
   };
 
-  // Đổi vai trò kiểm thử nhanh (Dành cho Giáo viên & Thử nghiệm thẩm định)
+  // Đổi vai trò kiểm thử nhanh (Dành cho Giáo viên và Thử nghiệm thẩm định)
   const switchRole = (role: UserRole) => {
     const cleanRole: UserRole = (role as any) === 'teacher_admin' ? 'admin' : role;
     setCurrentRole(cleanRole);
@@ -235,6 +237,55 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const loginAsRole = (role: UserRole) => {
     switchRole(role);
     closeAuthModal();
+  };
+
+  const loginAsStudent = (studentIdOrCode: string): boolean => {
+    const found = STUDENTS_LIST.find(
+      (s) =>
+        s.id === studentIdOrCode ||
+        s.studentCode.toLowerCase() === studentIdOrCode.toLowerCase() ||
+        s.fullName.toLowerCase() === studentIdOrCode.toLowerCase()
+    );
+    if (!found) return false;
+
+    // Load custom saved progress if any
+    let savedBookmarks = ['11111111-1111-1111-1111-111111111111', '33333333-3333-3333-3333-333333333333'];
+    let savedPoints = found.points;
+    let savedSolved: string[] = ['99000000-0000-0000-0000-000000000001'];
+    try {
+      const stored = localStorage.getItem(`netword_student_data_${found.id}`);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.points !== undefined) savedPoints = parsed.points;
+        if (parsed.bookmarkedWordIds) savedBookmarks = parsed.bookmarkedWordIds;
+        if (parsed.solvedChallengeIds) savedSolved = parsed.solvedChallengeIds;
+      }
+    } catch {}
+
+    const studentProfile: UserProfile = {
+      id: found.id,
+      name: found.fullName,
+      email: found.email,
+      role: found.role,
+      school: found.school,
+      grade: found.className,
+      title: found.role === 'editor' ? 'Thành viên Ban Biên tập Lớp 11' : 'Học viên Chuyên đề 2',
+      points: savedPoints,
+      bookmarkedWordIds: savedBookmarks,
+      solvedChallengeIds: savedSolved,
+      createdWordIds: [],
+      isSchoolIssued: true,
+      studentCode: found.studentCode,
+      accountStatus: found.status === 'transferred' ? 'suspended' : 'active',
+    };
+
+    setCurrentRole(found.role);
+    setCurrentUser(studentProfile);
+    localStorage.setItem('netword_active_role', found.role);
+    localStorage.setItem(`netword_user_profile_${found.role}`, JSON.stringify(studentProfile));
+    localStorage.setItem('netword_selected_student_id', found.id);
+    closeAuthModal();
+    return true;
   };
 
   // AN TOÀN TUYỆT ĐỐI: CHẶN TỰ NÂNG QUYỀN (ANTI SELF-ELEVATION)
@@ -291,7 +342,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return { success: true };
   };
 
-  // SUPABASE AUTH & LOCAL DEMO FLOWS
+  // SUPABASE AUTH và LOCAL DEMO FLOWS
   const signInWithEmail = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
     const cleanEmail = email.trim().toLowerCase();
     const cleanPassword = password.trim();
@@ -508,7 +559,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return {
         success: true,
         message:
-          'Đây là tài khoản do Trường THCS & THPT Long Hiệp cấp. Thầy Trầm Thanh Tuấn có thể cấp lại mật khẩu ngay tại Tab "Quản trị > Cấp tài khoản trường" mà không cần email cá nhân.',
+          'Đây là tài khoản do Trường THCS và THPT Long Hiệp cấp. Thầy Trầm Thanh Tuấn có thể cấp lại mật khẩu ngay tại Tab "Quản trị > Cấp tài khoản trường" mà không cần email cá nhân.',
       };
     }
 
@@ -607,6 +658,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         hasPerm,
         switchRole,
         loginAsRole,
+        loginAsStudent,
         updateProfile,
         adminSetUserRole,
 

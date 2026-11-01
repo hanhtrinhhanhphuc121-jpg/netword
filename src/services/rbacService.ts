@@ -7,6 +7,7 @@
 
 import { UserRole, PermissionAction, ActiveTab, SchoolIssuedAccount, RoleTestItem } from '../types';
 import { getActiveSupabaseClient } from './supabaseClient';
+import { STUDENTS_LIST } from '../data/studentsList';
 
 export interface RoleInfo {
   role: UserRole;
@@ -93,6 +94,7 @@ export function canAccessTab(role: UserRole, tab: ActiveTab): boolean {
     case 'detail':
     case 'challenges':
     case 'expression':
+    case 'students':
     case 'role_tests':
     case 'about':
       return true;
@@ -170,66 +172,23 @@ export const ROLE_TEST_CASES: RoleTestItem[] = [
   },
 ];
 
-// Dữ liệu mẫu danh sách tài khoản do trường THCS và THPT Long Hiệp cấp
-const INITIAL_SCHOOL_ACCOUNTS: SchoolIssuedAccount[] = [
-  {
-    id: 'lh-std-001',
-    studentCode: 'LH2026-11A1-001',
-    fullName: 'Nguyễn Văn Minh',
-    email: 'vanminh11a1@longhiep.edu.vn',
-    initialPassword: 'LongHiep@2026Minh',
-    role: 'student',
-    grade: 'Lớp 11A1 (Chuyên đề 2)',
-    school: 'Trường THCS và THPT Long Hiệp',
-    status: 'active',
-    isActivated: true,
-    issuedAt: '2026-09-05',
-    lastLoginAt: '2026-10-31',
-  },
-  {
-    id: 'lh-std-002',
-    studentCode: 'LH2026-11A1-002',
-    fullName: 'Trần Thị Mai Anh',
-    email: 'maianh11a1@longhiep.edu.vn',
-    initialPassword: 'LongHiep@2026Anh',
-    role: 'student',
-    grade: 'Lớp 11A1 (Chuyên đề 2)',
-    school: 'Trường THCS và THPT Long Hiệp',
-    status: 'active',
-    isActivated: true,
-    issuedAt: '2026-09-05',
-    lastLoginAt: '2026-10-30',
-  },
-  {
-    id: 'lh-edt-001',
-    studentCode: 'LH2026-11A2-015',
-    fullName: 'Lê Hoàng Ngọc Mai',
-    email: 'ngocmai.editor@longhiep.edu.vn',
-    initialPassword: 'LongHiep@2026Mai',
-    role: 'editor',
-    grade: 'Lớp 11A2 (Ban Biên tập)',
-    school: 'Trường THCS và THPT Long Hiệp',
-    status: 'active',
-    isActivated: true,
-    issuedAt: '2026-09-05',
-    lastLoginAt: '2026-10-31',
-  },
-  {
-    id: 'lh-edt-002',
-    studentCode: 'LH2026-11A2-022',
-    fullName: 'Phạm Đức Anh',
-    email: 'ducanh.editor@longhiep.edu.vn',
-    initialPassword: 'LongHiep@2026Duc',
-    role: 'editor',
-    grade: 'Lớp 11A2 (Ban Biên tập)',
-    school: 'Trường THCS và THPT Long Hiệp',
-    status: 'active',
-    isActivated: false,
-    issuedAt: '2026-09-10',
-  },
-];
+// Danh sách tài khoản học sinh Lớp 11 (Chuyên đề 2) do trường THCS và THPT Long Hiệp cấp
+const INITIAL_SCHOOL_ACCOUNTS: SchoolIssuedAccount[] = STUDENTS_LIST.map((s) => ({
+  id: s.id,
+  studentCode: s.studentCode,
+  fullName: s.fullName,
+  email: s.email,
+  initialPassword: s.initialPassword,
+  role: s.role,
+  grade: s.className,
+  school: s.school,
+  status: s.status === 'transferred' ? 'suspended' : 'active',
+  isActivated: s.status === 'active',
+  issuedAt: '2025-09-05',
+  lastLoginAt: s.status === 'active' ? '2026-10-31' : undefined,
+}));
 
-const SCHOOL_ACCOUNTS_STORAGE_KEY = 'netword_school_issued_accounts_v1';
+const SCHOOL_ACCOUNTS_STORAGE_KEY = 'netword_school_issued_accounts_v2';
 
 export const rbacService = {
   // Lấy danh sách tài khoản trường cấp

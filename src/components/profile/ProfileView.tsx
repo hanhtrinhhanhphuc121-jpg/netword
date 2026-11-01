@@ -1,5 +1,5 @@
 /**
- * NETWORD – Trang Cá nhân Học sinh & Quản lý Quyền Riêng tư
+ * NETWORD – Trang Cá nhân Học sinh và Quản lý Quyền Riêng tư
  * Chuyên đề 2: Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại - Ngữ văn 11
  * GV phát triển: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  * 
@@ -66,18 +66,18 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
   const [grade, setGrade] = useState(currentUser.grade);
   const [school, setSchool] = useState(currentUser.school);
 
-  // Danh sách từ yêu thích & Tìm kiếm
+  // Danh sách từ yêu thích và Tìm kiếm
   const [savedSearchQuery, setSavedSearchQuery] = useState('');
 
-  // Đóng góp từ mới & Trạng thái đề xuất
+  // Đóng góp từ mới và Trạng thái đề xuất
   const [userSuggestions, setUserSuggestions] = useState<WordSuggestion[]>([]);
   const [loadingSuggestions, setLoadingSuggestions] = useState(true);
 
-  // Lịch sử thử thách & Huy hiệu
+  // Lịch sử thử thách và Huy hiệu
   const [userAttempts, setUserAttempts] = useState<ChallengeAttempt[]>([]);
   const [badges, setBadges] = useState<LearningBadge[]>([]);
 
-  // Quyền riêng tư & Cài đặt
+  // Quyền riêng tư và Cài đặt
   const [privacySettings, setPrivacySettings] = useState<UserPrivacySettings>(
     userService.getPrivacySettings(currentUser.id)
   );
@@ -233,7 +233,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
 
           <div className="max-w-md mx-auto space-y-2">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-              Hồ sơ Cá nhân dành cho Học sinh & Giáo viên
+              Hồ sơ Cá nhân dành cho Học sinh và Giáo viên
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
               Bạn đang ở chế độ <strong>Khách vãng lai (Guest)</strong>. Vui lòng đăng nhập bằng tài khoản do Trường THCS và THPT Long Hiệp cấp để quản lý danh sách từ đã lưu, theo dõi tiến độ thử thách và xem trạng thái đóng góp từ mới.
@@ -314,7 +314,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
             </div>
           </div>
 
-          {/* Điểm cống hiến & Nút chỉnh sửa */}
+          {/* Điểm cống hiến và Nút chỉnh sửa */}
           <div className="flex items-center gap-3 self-end md:self-center">
             <div className="bg-white/10 dark:bg-slate-900/40 p-3.5 rounded-2xl border border-white/15 text-center min-w-[100px]">
               <div className="text-2xl font-black text-cyan-300 tabular-nums">{currentUser.points}</div>
@@ -332,12 +332,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
           </div>
         </div>
 
-        {/* Thông báo cam kết bảo vệ dữ liệu học sinh & Chế độ dùng thử */}
+        {/* Thông báo cam kết bảo vệ dữ liệu học sinh và Chế độ dùng thử */}
         <div className="mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-indigo-200/90 relative z-10">
           <div className="flex items-center gap-2">
             <Lock className="w-3.5 h-3.5 text-amber-300 shrink-0" />
             <span>
-              <strong>Bảo mật & Lưu trữ:</strong> Dữ liệu hồ sơ, điểm cống hiến và từ lưu được lưu trữ cục bộ trên trình duyệt thiết bị này (LocalStorage).
+              <strong>Bảo mật và Lưu trữ:</strong> Dữ liệu hồ sơ, điểm cống hiến và từ lưu được lưu trữ cục bộ trên trình duyệt thiết bị này (LocalStorage).
             </span>
           </div>
           <span className="text-[11px] px-2 py-0.5 rounded-md bg-white/10 text-cyan-200 border border-white/15 self-start sm:self-auto font-medium">
@@ -501,7 +501,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
           }`}
         >
           <ShieldAlert className="w-4 h-4" />
-          <span>Quyền riêng tư & Dữ liệu</span>
+          <span>Quyền riêng tư và Dữ liệu</span>
         </button>
 
         <button
@@ -603,7 +603,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
                       onClick={() => onNavigate('detail', item.id)}
                       className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 pt-2 border-t border-slate-100 dark:border-slate-800"
                     >
-                      <span>Xem chi tiết & cách diễn đạt chuẩn</span>
+                      <span>Xem chi tiết và cách diễn đạt chuẩn</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </Card>
@@ -615,7 +615,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
       )}
 
       {/* ============================================================ */}
-      {/* SUB-TAB 2: NHỮNG TỪ ĐÃ ĐÓNG GÓP & TRẠNG THÁI ĐỀ XUẤT */}
+      {/* SUB-TAB 2: NHỮNG TỪ ĐÃ ĐÓNG GÓP và TRẠNG THÁI ĐỀ XUẤT */}
       {/* ============================================================ */}
       {activeTab === 'contributions' && (
         <div className="space-y-4">
@@ -887,17 +887,17 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
       )}
 
       {/* ============================================================ */}
-      {/* SUB-TAB 5: TÙY CHỌN THÔNG BÁO, QUYỀN RIÊNG TƯ & QUYỀN DỮ LIỆU */}
+      {/* SUB-TAB 5: TÙY CHỌN THÔNG BÁO, QUYỀN RIÊNG TƯ và QUYỀN DỮ LIỆU */}
       {/* ============================================================ */}
       {activeTab === 'privacy' && (
         <div className="space-y-6">
-          {/* Cài đặt Quyền riêng tư & Thông báo */}
+          {/* Cài đặt Quyền riêng tư và Thông báo */}
           <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div>
                 <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
                   <Lock className="w-4 h-4 text-indigo-600" />
-                  Chính sách Quyền riêng tư & Thông báo
+                  Chính sách Quyền riêng tư và Thông báo
                 </h3>
                 <p className="text-xs text-slate-500">
                   Thiết lập chế độ bảo vệ thông tin học sinh theo quy chế nhà trường.
@@ -992,7 +992,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
                     <span>Thông báo khi có bộ Thử thách Tuần mới</span>
                   </div>
                   <p className="text-xs text-slate-500 leading-relaxed">
-                    Nhắc nhở tham gia làm bài chuyên đề định kỳ hàng tuần của tổ Ngữ văn Trường THCS & THPT Long Hiệp.
+                    Nhắc nhở tham gia làm bài chuyên đề định kỳ hàng tuần của tổ Ngữ văn Trường THCS và THPT Long Hiệp.
                   </p>
                 </div>
                 <input
@@ -1024,7 +1024,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ words, onNavigate }) =
             <div>
               <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <ShieldAlert className="w-4 h-4 text-rose-600" />
-                Quyền Chỉnh sửa & Xóa dữ liệu cá nhân (Right to be Forgotten)
+                Quyền Chỉnh sửa và Xóa dữ liệu cá nhân (Right to be Forgotten)
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Học sinh có quyền gửi yêu cầu đính chính sai sót hoặc yêu cầu xóa bỏ toàn bộ dữ liệu làm bài và tương tác của mình theo chính sách bảo vệ dữ liệu học đường.

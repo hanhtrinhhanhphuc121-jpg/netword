@@ -533,11 +533,380 @@ const APPROVED_TERM_RULES: ApprovedTermRule[] = [
         pedagogicalGuidance: 'Đánh giá nghệ thuật trào phúng của tác phẩm.'
       }
     }
+  },
+  {
+    term: 'Slay',
+    aliases: ['slay', 'sờ lay', 'slayed'],
+    category: 'Từ mượn tiếng Anh',
+    mappings: {
+      friend_chat: {
+        replacement: 'quá xuất sắc / nổi bật thần thái',
+        explanation: 'Lời khen ngợi tự nhiên tràn đầy năng lượng tích cực giữa bạn bè.',
+        pedagogicalGuidance: 'Dùng khen bạn bè vui vẻ ngoài giờ học.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'vô cùng xuất sắc / phong thái rất ấn tượng',
+        explanation: 'Giữ vẻ tự nhiên nhưng văn minh và rõ nghĩa cho cộng đồng mạng.',
+        pedagogicalGuidance: 'Khen ngợi vẻ đẹp và tài năng một cách lịch sự.'
+      },
+      teacher_exchange: {
+        replacement: 'bạn thể hiện phần thuyết trình rất tự tin và xuất sắc ạ',
+        explanation: 'Khi báo cáo hoặc nhận xét bài của bạn với thầy cô, dùng từ ngữ học đường chuẩn tắc.',
+        pedagogicalGuidance: 'Tuyệt đối không dùng từ lóng ngoại lai khi thưa gửi thầy cô.'
+      },
+      class_announcement: {
+        replacement: 'tiết mục biểu diễn đạt kết quả vô cùng nổi bật',
+        explanation: 'Tuyên dương thành tích phong trào cho tập thể lớp.',
+        pedagogicalGuidance: 'Khích lệ tinh thần thi đua của lớp.'
+      },
+      academic_writing: {
+        replacement: 'phong thái tự tin và năng lực biểu diễn xuất chúng',
+        explanation: 'Dùng từ toàn dân mang tính miêu tả thẩm mỹ học thuật.',
+        pedagogicalGuidance: 'Chỉ trích dẫn như một mẫu biểu cảm của giới trẻ.'
+      }
+    }
+  },
+  {
+    term: 'Red flag',
+    aliases: ['red flag', 'redflag', 'cờ đỏ', 'red flag 🚩'],
+    category: 'Ẩn dụ biểu tượng quốc tế',
+    mappings: {
+      friend_chat: {
+        replacement: 'dấu hiệu bất ổn / điều đáng ngờ',
+        explanation: 'Cảnh báo bạn bè trước một tình huống bất thường.',
+        pedagogicalGuidance: 'Khuyên bạn bè thận trọng nhưng không vội vàng phán xét.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'dấu hiệu rủi ro / biểu hiện thiếu tin cậy',
+        explanation: 'Góp ý khách quan trên không gian mạng.',
+        pedagogicalGuidance: 'Giúp cộng đồng nhận diện thông tin độc hại.'
+      },
+      teacher_exchange: {
+        replacement: 'biểu hiện tiêu cực cần được lưu ý và chấn chỉnh kịp thời ạ',
+        explanation: 'Báo cáo với giáo viên về khó khăn hoặc biểu hiện lệch chuẩn trong nề nếp.',
+        pedagogicalGuidance: 'Thể hiện ý thức trách nhiệm xây dựng tập thể.'
+      },
+      class_announcement: {
+        replacement: 'các hành vi vi phạm nội quy cần nghiêm túc chấn chỉnh',
+        explanation: 'Nhắc nhở nề nếp lớp học rõ ràng.',
+        pedagogicalGuidance: 'Duy trì kỷ cương nền nếp học đường.'
+      },
+      academic_writing: {
+        replacement: 'những biểu hiện tiêu cực tiềm ẩn rủi ro xã hội',
+        explanation: 'Khái quát hóa thành phạm trù tâm lý - xã hội trong bài văn nghị luận.',
+        pedagogicalGuidance: 'Phân tích cơ chế tâm lý tiếp nhận thông tin.'
+      }
+    }
+  },
+  {
+    term: 'Cấn cấn',
+    aliases: ['cấn cấn', 'cấn', 'hơi cấn', 'hơi cấn cấn', 'thấy cấn'],
+    category: 'Từ tượng giác thuần Việt',
+    mappings: {
+      friend_chat: {
+        replacement: 'hơi lấn cấn / thấy sai sai sao á',
+        explanation: 'Cách diễn đạt tự nhiên khi cảm thấy chi tiết nào đó gượng gạo.',
+        pedagogicalGuidance: 'Kích thích khả năng tranh luận phản biện của học sinh.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'chưa thật sự hợp lý / có điểm đáng băn khoăn',
+        explanation: 'Nêu ý kiến tranh luận nhã nhặn, tôn trọng người đối thoại.',
+        pedagogicalGuidance: 'Xây dựng thói quen phản biện văn minh.'
+      },
+      teacher_exchange: {
+        replacement: 'dạ em thấy điểm này dường như chưa thật hợp lý, xin cô hướng dẫn thêm ạ',
+        explanation: 'Thưa hỏi thầy cô một cách khiêm tốn, cầu tiến.',
+        pedagogicalGuidance: 'Biết cách đặt câu hỏi khoa học trong học tập.'
+      },
+      class_announcement: {
+        replacement: 'nội dung còn có điểm vướng mắc cần trao đổi lại cho rõ ràng',
+        explanation: 'Làm rõ nội dung thông báo cho cả lớp cùng hiểu thống nhất.',
+        pedagogicalGuidance: 'Đảm bảo thông tin rõ ràng, minh bạch.'
+      },
+      academic_writing: {
+        replacement: 'lập luận còn thiếu tính nhất quán và chưa đủ sức thuyết phục',
+        explanation: 'Dùng thuật ngữ văn học phản biện bài văn hoặc nhận định tác phẩm.',
+        pedagogicalGuidance: 'Chỉ ra sự mâu thuẫn trong lập luận của đối tượng phân tích.'
+      }
+    }
+  },
+  {
+    term: 'Mãi đỉnh',
+    aliases: ['mãi đỉnh', 'mai dinh', 'mãi đĩnh'],
+    category: 'Tiếng lóng Gen Z khen ngợi',
+    mappings: {
+      friend_chat: {
+        replacement: 'quá tuyệt vời / đỉnh cao luôn',
+        explanation: 'Lời cổ vũ nồng nhiệt cho bạn bè sau khi đạt thành tích tốt.',
+        pedagogicalGuidance: 'Lan tỏa năng lượng gắn kết bạn bè.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'vô cùng xuất sắc / rất đáng tự hào',
+        explanation: 'Bình luận mang lại cảm xúc phấn chấn cho người đọc.',
+        pedagogicalGuidance: 'Khuyến khích biểu dương gương người tốt việc tốt.'
+      },
+      teacher_exchange: {
+        replacement: 'tập thể lớp đã đạt được kết quả vô cùng xuất sắc ạ',
+        explanation: 'Báo cáo thành tích với thầy cô một cách lễ phép, trang trọng.',
+        pedagogicalGuidance: 'Tôn trọng chuẩn mực ngôn ngữ học đường.'
+      },
+      class_announcement: {
+        replacement: 'nhiệt liệt biểu dương thành tích xuất sắc của chi đoàn',
+        explanation: 'Thông báo lớp trang trọng khích lệ phong trào chung.',
+        pedagogicalGuidance: 'Tạo động lực thi đua học tốt.'
+      },
+      academic_writing: {
+        replacement: 'đạt đến đỉnh cao mẫu mực của thành tựu',
+        explanation: 'Nâng lên thành ngôn ngữ phê bình văn học hoặc nghị luận xã hội.',
+        pedagogicalGuidance: 'Sử dụng từ ngữ toàn dân chuẩn xác.'
+      }
+    }
+  },
+  {
+    term: 'Hết cứu',
+    aliases: ['hết cứu', 'het cuu', 'đúng là hết cứu'],
+    category: 'Tiếng lóng Gen Z hài hước',
+    mappings: {
+      friend_chat: {
+        replacement: 'nan giải ghê / tình huống khó đỡ thật',
+        explanation: 'Lời than thở hóm hỉnh khi gặp phải sai sót trớ trêu.',
+        pedagogicalGuidance: 'Giúp giải tỏa áp lực thi cử qua tiếng cười.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'tình huống vô cùng khó xử lý và trớ trêu',
+        explanation: 'Bình luận dí dỏm nhưng không quá bỗ bã.',
+        pedagogicalGuidance: 'Giữ thái độ tích cực khi nhìn nhận sai sót.'
+      },
+      teacher_exchange: {
+        replacement: 'dạ tình huống này rất khó giải quyết, em kính xin Thầy/Cô chỉ dẫn ạ',
+        explanation: 'Hỏi ý kiến giáo viên khi gặp bế tắc trong bài vở.',
+        pedagogicalGuidance: 'Thẳng thắn nhìn nhận thiếu sót để sửa chữa.'
+      },
+      class_announcement: {
+        replacement: 'sự cố phát sinh nan giải cần tập thể cùng nhau tháo gỡ',
+        explanation: 'Kêu gọi tinh thần đồng lòng của cả lớp.',
+        pedagogicalGuidance: 'Tăng cường tính đoàn kết nội bộ.'
+      },
+      academic_writing: {
+        replacement: 'tình thế bế tắc không thể cứu vãn trong bối cảnh thực tại',
+        explanation: 'Diễn tả bước đường cùng của số phận nhân vật văn học hiện thực.',
+        pedagogicalGuidance: 'Phân tích bi kịch xã hội sâu sắc.'
+      }
+    }
+  },
+  {
+    term: 'Xin vía',
+    aliases: ['xin vía', 'xin via', 'cho xin vía'],
+    category: 'Văn hóa dân gian số hóa',
+    mappings: {
+      friend_chat: {
+        replacement: 'mong được may mắn và học giỏi giống như bạn nhé',
+        explanation: 'Lời chúc dễ thương bày tỏ sự ngưỡng mộ bạn học.',
+        pedagogicalGuidance: 'Tạo động lực học tập cho nhau.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'ngưỡng mộ thành quả của bạn, mong mình cũng nỗ lực được như thế',
+        explanation: 'Bình luận văn minh truyền cảm hứng tích cực.',
+        pedagogicalGuidance: 'Học hỏi tấm gương sáng của bạn bè.'
+      },
+      teacher_exchange: {
+        replacement: 'em rất mong được học hỏi kinh nghiệm quý báu từ Thầy/Cô ạ',
+        explanation: 'Bày tỏ lòng hiếu học với giáo viên.',
+        pedagogicalGuidance: 'Tôn sư trọng đạo, khiêm tốn học hỏi.'
+      },
+      class_announcement: {
+        replacement: 'khuyến khích toàn thể học sinh noi gương thành tích tiêu biểu',
+        explanation: 'Nhân rộng các điển hình học tập của lớp.',
+        pedagogicalGuidance: 'Xây dựng môi trường học đường tiến bộ.'
+      },
+      academic_writing: {
+        replacement: 'khát vọng noi gương và tiếp nối những giá trị thành công tốt đẹp',
+        explanation: 'Nghị luận về động lực vươn lên trong cuộc sống.',
+        pedagogicalGuidance: 'Khẳng định vai trò của sự nỗ lực tự thân.'
+      }
+    }
+  },
+  {
+    term: 'Mãi keo',
+    aliases: ['mãi keo', 'mai keo', 'mãi keo nha'],
+    category: 'Tiếng lóng Gen Z tình bạn',
+    mappings: {
+      friend_chat: {
+        replacement: 'luôn yêu quý và gắn bó keo sơn nhé',
+        explanation: 'Lời chúc tình bạn thắm thiết của tuổi học trò.',
+        pedagogicalGuidance: 'Bồi dưỡng tình cảm bạn bè trong sáng.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'chúc tình bạn của chúng ta luôn luôn bền chặt',
+        explanation: 'Bày tỏ tình cảm gắn bó văn minh trên mạng.',
+        pedagogicalGuidance: 'Gìn giữ mối quan hệ bạn bè lâu dài.'
+      },
+      teacher_exchange: {
+        replacement: 'tập thể lớp chúng em luôn đoàn kết gắn bó ạ',
+        explanation: 'Báo cáo với thầy cô về tinh thần đoàn kết của lớp.',
+        pedagogicalGuidance: 'Xây dựng tập thể lớp học vững mạnh.'
+      },
+      class_announcement: {
+        replacement: 'phát huy tinh thần gắn kết, keo sơn bền chặt của chi đoàn',
+        explanation: 'Khẩu hiệu gắn kết học sinh trong các phong trào.',
+        pedagogicalGuidance: 'Kế thừa truyền thống đoàn kết của dân tộc.'
+      },
+      academic_writing: {
+        replacement: 'tình cảm keo sơn gắn bó bền vững vượt qua thời gian',
+        explanation: 'Dùng thành ngữ truyền thống chỉ tình nghĩa bạn hữu tri âm tri kỷ.',
+        pedagogicalGuidance: 'Vận dụng thành ngữ tục ngữ chuẩn mực.'
+      }
+    }
+  },
+  {
+    term: 'Outfit cháy phố',
+    aliases: ['outfit cháy phố', 'cháy phố', 'outfit chay pho'],
+    category: 'Tiếng lóng thời trang giới trẻ',
+    mappings: {
+      friend_chat: {
+        replacement: 'trang phục hôm nay rất nổi bật và phong cách',
+        explanation: 'Khen ngợi vẻ ngoài bạn học tươi tắn trong ngày hội.',
+        pedagogicalGuidance: 'Khen ngợi lịch thiệp, tôn trọng bạn bè.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'trang phục rất đẹp mắt và thu hút ánh nhìn',
+        explanation: 'Bình luận khen ngợi gu thẩm mỹ của bạn.',
+        pedagogicalGuidance: 'Hình thành thẩm mỹ thời trang thanh lịch.'
+      },
+      teacher_exchange: {
+        replacement: 'chúng em mặc trang phục đồng phục chỉnh tề, trang nghiêm ạ',
+        explanation: 'Báo cáo tác phong học sinh với giáo viên.',
+        pedagogicalGuidance: 'Tuân thủ nội quy tác phong học đường.'
+      },
+      class_announcement: {
+        replacement: 'yêu cầu học sinh mặc đồng phục trang nhã, đúng quy định',
+        explanation: 'Nhắc nhở toàn lớp về trang phục sinh hoạt tập thể.',
+        pedagogicalGuidance: 'Giữ gìn vẻ đẹp học sinh trường Long Hiệp.'
+      },
+      academic_writing: {
+        replacement: 'phong cách thời trang hiện đại thể hiện cá tính năng động của thanh niên',
+        explanation: 'Bình luận về văn hóa ăn mặc trong xã hội hiện đại.',
+        pedagogicalGuidance: 'Đánh giá mối quan hệ giữa cá tính và chuẩn mực.'
+      }
+    }
+  },
+  {
+    term: 'Sốc visual',
+    aliases: ['sốc visual', 'soc visual', 'bị sốc visual'],
+    category: 'Chuyển mã kết hợp Anh - Việt',
+    mappings: {
+      friend_chat: {
+        replacement: 'choáng ngợp trước vẻ đẹp / nhìn cuốn hút quá',
+        explanation: 'Cảm thán trước hình ảnh hoặc sân khấu quá ấn tượng.',
+        pedagogicalGuidance: 'Khuyến khích thưởng thức cái đẹp.',
+        keepSlangAcceptable: true
+      },
+      social_comment: {
+        replacement: 'vô cùng ấn tượng trước hình ảnh nghệ thuật đẹp mắt',
+        explanation: 'Bày tỏ cảm xúc thẩm mỹ văn minh.',
+        pedagogicalGuidance: 'Nâng cao năng lực cảm thụ nghệ thuật.'
+      },
+      teacher_exchange: {
+        replacement: 'khung cảnh được bài trí rất trang trọng và đẹp mắt ạ',
+        explanation: 'Nhận xét sân khấu ngày lễ kỷ niệm với thầy cô.',
+        pedagogicalGuidance: 'Dùng từ ngữ miêu tả không gian chuẩn mực.'
+      },
+      class_announcement: {
+        replacement: 'khâu khánh tiết trang trí lớp học đã hoàn thành lộng lẫy',
+        explanation: 'Thông báo kết quả chuẩn bị hội thi trang trí lớp.',
+        pedagogicalGuidance: 'Biểu dương công sức ban trang trí.'
+      },
+      academic_writing: {
+        replacement: 'ấn tượng thị giác mạnh mẽ tác động sâu sắc đến mỹ cảm người tiếp nhận',
+        explanation: 'Phân tích nghệ thuật thị giác và miêu tả trong văn chương.',
+        pedagogicalGuidance: 'Sử dụng hệ thống từ ngữ mỹ học chuẩn mực.'
+      }
+    }
   }
 ];
 
-// Bộ câu mẫu gợi ý để học sinh và giáo viên trải nghiệm nhanh
+// Bộ câu mẫu gợi ý để học sinh và giáo viên trải nghiệm nhanh (Bao gồm 10 câu tiêu biểu Nhóm 4)
 export const SAMPLE_PROMPTS: SampleExpressionPrompt[] = [
+  // 10 câu giao tiếp trên mạng xã hội Chuyên đề 2 (Nhóm 4)
+  {
+    id: 'sp-cs-1',
+    sentence: 'Bạn này slay quá!',
+    suggestedContext: 'friend_chat',
+    description: '1. Nhóm 4: Khen ngợi thần thái xuất sắc, tự tin của bạn học',
+    slangContained: ['slay']
+  },
+  {
+    id: 'sp-cs-2',
+    sentence: 'Cho xin vía học giỏi!',
+    suggestedContext: 'social_comment',
+    description: '2. Nhóm 4: Bày tỏ sự ngưỡng mộ thành tích và mong ước học tập tốt',
+    slangContained: ['xin vía']
+  },
+  {
+    id: 'sp-cs-3',
+    sentence: 'Nay outfit cháy phố!',
+    suggestedContext: 'friend_chat',
+    description: '3. Nhóm 4: Khen ngợi trang phục bạn mặc nổi bật, phong cách',
+    slangContained: ['outfit cháy phố']
+  },
+  {
+    id: 'sp-cs-4',
+    sentence: 'Câu chuyện này hơi cấn!',
+    suggestedContext: 'academic_writing',
+    description: '4. Nhóm 4: Phản biện chi tiết cảm thấy chưa hợp lý, thiếu logic',
+    slangContained: ['cấn cấn']
+  },
+  {
+    id: 'sp-cs-5',
+    sentence: 'Đúng gu tôi luôn!',
+    suggestedContext: 'friend_chat',
+    description: '5. Nhóm 4: Khẳng định sự tương đồng về sở thích bản thân',
+    slangContained: ['đúng gu']
+  },
+  {
+    id: 'sp-cs-6',
+    sentence: 'Không đùa được đâu!',
+    suggestedContext: 'friend_chat',
+    description: '6. Nhóm 4: Nhấn mạnh sự ấn tượng, thực lực đáng nể phục',
+    slangContained: ['không đùa được đâu']
+  },
+  {
+    id: 'sp-cs-7',
+    sentence: 'Tôi bị sốc visual!',
+    suggestedContext: 'social_comment',
+    description: '7. Nhóm 4: Choáng ngợp trước vẻ đẹp hình ảnh hoặc sân khấu lộng lẫy',
+    slangContained: ['sốc visual']
+  },
+  {
+    id: 'sp-cs-8',
+    sentence: 'Mãi keo nha!',
+    suggestedContext: 'friend_chat',
+    description: '8. Nhóm 4: Lời chúc tình bạn mãi gắn bó keo sơn, bền chặt',
+    slangContained: ['mãi keo']
+  },
+  {
+    id: 'sp-cs-9',
+    sentence: 'Xin phép được flex nhẹ!',
+    suggestedContext: 'social_comment',
+    description: '9. Nhóm 4: Khiêm tốn chia sẻ niềm vui thành tích vừa đạt được',
+    slangContained: ['flex']
+  },
+  {
+    id: 'sp-cs-10',
+    sentence: 'Đúng là hết cứu!',
+    suggestedContext: 'friend_chat',
+    description: '10. Nhóm 4: Than thở vui trước tình huống trớ trêu khó đỡ',
+    slangContained: ['hết cứu']
+  },
+  // Các câu tình huống học đường đa dạng khác
   {
     id: 'sp-1',
     sentence: 'Hôm nay em xin phép cô cho em cook sớm vì cột sống em bất ổn quá ạ.',

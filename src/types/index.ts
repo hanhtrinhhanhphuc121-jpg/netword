@@ -41,9 +41,14 @@ export interface WordComment {
 
 export interface WordEntry {
   id: string;
+  officialCode?: string;        // Mã mục từ chính thức NW-0001 -> NW-0300
+  stt?: number;                 // Số thứ tự 1 -> 300
   word: string;
   pronunciation?: string;
   category: WordCategory;
+  topicTheme?: string;          // 12 Nhóm chủ đề từ Chuyên đề 2
+  unitType?: string;            // Loại đơn vị: Từ / thuật ngữ, Cụm từ, Mẫu câu...
+  sourceUrl?: string;           // Nguồn tham khảo
   literalMeaning: string;       // Nghĩa gốc / nghĩa đen
   netMeaning: string;           // Nghĩa trên không gian mạng
   origin: string;               // Nguồn gốc xuất hiện & hoàn cảnh nảy sinh
@@ -154,14 +159,17 @@ export interface ChallengeQuestion {
 export type ActiveTab =
   | 'home'
   | 'dictionary'
+  | 'curriculum'
   | 'detail'
   | 'suggest'
   | 'challenges'
   | 'expression'
+  | 'students'
   | 'profile'
   | 'editor'
   | 'admin'
   | 'role_tests'
   | 'about';
+
 
 

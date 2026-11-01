@@ -98,7 +98,7 @@ export const RoleTestSuiteView: React.FC = () => {
           Bộ Kiểm thử Hệ thống Phân quyền Tin cậy
         </div>
         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-          Bộ Kiểm thử Phân quyền 4 Vai trò & Chống Tự Nâng quyền
+          Bộ Kiểm thử Phân quyền 4 Vai trò và Chống Tự Nâng quyền
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
           Xác thực tự động quyền hạn của <strong>guest, student, editor, admin</strong>, bảo đảm học sinh không thể tự sửa vai trò trên giao diện, route guard hay cơ sở dữ liệu.

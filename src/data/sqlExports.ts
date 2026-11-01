@@ -1,5 +1,5 @@
 /**
- * NETWORD - SQL Migration, Seed, Verification & ERD Exporters
+ * NETWORD - SQL Migration, Seed, Verification và ERD Exporters
  * Chuyên đề 2: Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại - Ngữ văn 11
  * GV: Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  */
@@ -443,7 +443,7 @@ SELECT * FROM public.check_duplicate_term('Chữa Lành');
 SELECT * FROM public.check_duplicate_term('từ_mới_hoàn_toàn_12345');
 `;
 
-export const ERD_MARKDOWN = `# SƠ ĐỒ QUAN HỆ THỰC THỂ (ERD) & KIẾN TRÚC CƠ SỞ DỮ LIỆU NETWORD
+export const ERD_MARKDOWN = `# SƠ ĐỒ QUAN HỆ THỰC THỂ (ERD) và KIẾN TRÚC CƠ SỞ DỮ LIỆU NETWORD
 **Dự án:** NETWORD – Từ điển ngôn ngữ trên không gian mạng dành cho học sinh THPT
 **Chuyên đề 2:** Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại (Ngữ văn 11)
 **Đơn vị:** Trường THCS và THPT Long Hiệp
@@ -499,8 +499,8 @@ export interface TableSummaryItem {
 export const SUPABASE_TABLES_INFO: TableSummaryItem[] = [
   {
     name: 'profiles',
-    vietnameseName: 'Hồ sơ người dùng & Phân quyền',
-    purpose: 'Lưu thông tin học sinh, ban biên tập và giáo viên Trường THCS & THPT Long Hiệp.',
+    vietnameseName: 'Hồ sơ người dùng và Phân quyền',
+    purpose: 'Lưu thông tin học sinh, ban biên tập và giáo viên Trường THCS và THPT Long Hiệp.',
     rlsPolicy: 'Đọc công khai, người dùng tự sửa hồ sơ của mình, chỉ giáo viên đổi vai trò.',
     keyFields: 'id (PK), email, full_name, role (student | editor | teacher_admin), points',
   },
@@ -520,7 +520,7 @@ export const SUPABASE_TABLES_INFO: TableSummaryItem[] = [
   },
   {
     name: 'term_examples',
-    vietnameseName: 'Ví dụ & Đối thoại minh họa (1:N)',
+    vietnameseName: 'Ví dụ và Đối thoại minh họa (1:N)',
     purpose: 'Lưu các đoạn chat giả lập thực tế giữa học sinh để hiểu ngữ cảnh dùng từ.',
     rlsPolicy: 'Công chúng đọc ví dụ từ published, giáo viên/biên tập viên quản lý.',
     keyFields: 'id (PK), term_id (FK), meaning_id (FK), context_title, dialogue (JSONB)',
@@ -534,7 +534,7 @@ export const SUPABASE_TABLES_INFO: TableSummaryItem[] = [
   },
   {
     name: 'term_revisions',
-    vietnameseName: 'Lịch sử kiểm duyệt & Sửa đổi',
+    vietnameseName: 'Lịch sử kiểm duyệt và Sửa đổi',
     purpose: 'Lưu vết toàn bộ thay đổi nội dung mục từ (snapshot trước và sau) phục vụ học thuật.',
     rlsPolicy: 'Chỉ giáo viên và ban biên tập được truy cập kiểm toán.',
     keyFields: 'id (PK), term_id (FK), editor_id (FK), editor_name, previous_snapshot, updated_snapshot',
@@ -548,7 +548,7 @@ export const SUPABASE_TABLES_INFO: TableSummaryItem[] = [
   },
   {
     name: 'reviews',
-    vietnameseName: 'Biên bản thẩm định & Phê duyệt',
+    vietnameseName: 'Biên bản thẩm định và Phê duyệt',
     purpose: 'Ghi nhận nhận xét chuyên môn, quyết định duyệt hoặc yêu cầu chỉnh sửa của thầy cô.',
     rlsPolicy: 'Công chúng đọc nhận xét được công bố; giáo viên/biên tập viên ghi phiếu.',
     keyFields: 'id (PK), submission_id (FK), term_id (FK), reviewer_id (FK), decision, feedback',
@@ -583,7 +583,7 @@ export const SUPABASE_TABLES_INFO: TableSummaryItem[] = [
   },
   {
     name: 'reports',
-    vietnameseName: 'Báo cáo & Phản ánh nội dung',
+    vietnameseName: 'Báo cáo và Phản ánh nội dung',
     purpose: 'Học sinh gửi phản ánh khi phát hiện từ ngữ phản cảm hoặc thông tin giải nghĩa chưa chuẩn.',
     rlsPolicy: 'Mọi người được gửi báo cáo; chỉ giáo viên và ban biên tập tiếp nhận xử lý.',
     keyFields: 'id (PK), term_id (FK), reporter_id (FK), reason, description, status (pending | resolved)',

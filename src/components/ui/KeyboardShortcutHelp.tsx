@@ -79,7 +79,7 @@ export const KeyboardShortcutHelp: React.FC = () => {
             </div>
 
             <p className="text-[11px] text-slate-400 italic text-center">
-              Tối ưu cho học sinh THPT học tập và thao tác nhanh trên máy tính & tablet.
+              Tối ưu cho học sinh THPT học tập và thao tác nhanh trên máy tính và tablet.
             </p>
           </div>
         </div>

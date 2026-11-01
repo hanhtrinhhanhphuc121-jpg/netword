@@ -1,5 +1,5 @@
 /**
- * NETWORD - Dịch vụ Quản trị Nâng cao, Kiểm toán (Audit) & Báo cáo Sư phạm
+ * NETWORD - Dịch vụ Quản trị Nâng cao, Kiểm toán (Audit) và Báo cáo Sư phạm
  * Chuyên đề 2: Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại - Ngữ văn 11
  * GV phát triển: Thầy Trầm Thanh Tuấn - Trường THCS và THPT Long Hiệp
  * 
@@ -73,7 +73,7 @@ export interface DashboardMetrics {
     }>;
   };
 
-  // 5. Mục từ được tra cứu & quan tâm nhiều nhất
+  // 5. Mục từ được tra cứu và quan tâm nhiều nhất
   topSearchedTerms: Array<{
     id: string;
     word: string;
@@ -83,7 +83,7 @@ export interface DashboardMetrics {
     schoolAppropriateness: string;
   }>;
 
-  // 6. Phản ánh & yêu cầu dữ liệu học sinh đang chờ giải quyết
+  // 6. Phản ánh và yêu cầu dữ liệu học sinh đang chờ giải quyết
   pendingDataRequests: UserDataRequest[];
 }
 
@@ -137,7 +137,7 @@ class AdminAuditService {
         timestamp: '2026-10-31 09:12:00',
         action: 'CẤP TÀI KHOẢN HỌC ĐƯỜNG',
         category: 'accounts',
-        target: 'Lớp 11A1 & 11A2',
+        target: 'Lớp 11A1 và 11A2',
         performedBy: 'Thầy Trầm Thanh Tuấn (Admin)',
         details: 'Cấp mã học sinh và mật khẩu khởi tạo cho học sinh tham gia khảo sát thực địa.',
         status: 'success',
@@ -315,7 +315,7 @@ class AdminAuditService {
         schoolAppropriateness: w.schoolAppropriateness,
       }));
 
-    // 7. Phản ánh & yêu cầu dữ liệu đang chờ xử lý
+    // 7. Phản ánh và yêu cầu dữ liệu đang chờ xử lý
     const pendingDataRequests = allDataRequests.filter((r) => r.status === 'pending');
 
     return {
@@ -338,7 +338,7 @@ class AdminAuditService {
   }
 
   // ==========================================
-  // 3. XUẤT BÁO CÁO CSV / EXCEL & BÁO CÁO TỔNG HỢP
+  // 3. XUẤT BÁO CÁO CSV / EXCEL và BÁO CÁO TỔNG HỢP
   // ==========================================
   // Xuất file CSV/Excel bảng số liệu tổng hợp (Không lộ PII cá nhân của học sinh)
   public exportAggregateCSV(metrics: DashboardMetrics, timeFilter: string, classFilter: string): string {
@@ -399,7 +399,7 @@ class AdminAuditService {
 BÁO CÁO TỔNG KẾT TRIỂN KHAI ỨNG DỤNG TỪ ĐIỂN MẠNG "NETWORD"
 Chuyên đề 2: Tìm hiểu ngôn ngữ trong đời sống xã hội hiện đại - Ngữ văn 11
 Đơn vị: Trường THCS và THPT Long Hiệp
-Giáo viên phụ trách & Quản trị hệ thống: Thầy Trầm Thanh Tuấn
+Giáo viên phụ trách và Quản trị hệ thống: Thầy Trầm Thanh Tuấn
 Thời điểm lập báo cáo: ${dateStr}
 Phạm vi dữ liệu: Bộ lọc Thời gian [${timeFilter}] | Nhóm học sinh [${classFilter}]
 ================================================================================
@@ -411,7 +411,7 @@ I. ĐÁNH GIÁ CHUNG VỀ TÌNH HÌNH SỬ DỤNG VÀ THỰC HÀNH NGÔN NGỮ
    - Tổng số học sinh tham gia có tài khoản hoạt động: ${metrics.activeStudentsCount} học sinh.
    - Tổng số lượt tra cứu và tìm hiểu ngôn ngữ: ${metrics.totalLookupsCount} lượt tra cứu.
 
-2. Hoạt động đề xuất & khảo sát từ thực tế của học sinh:
+2. Hoạt động đề xuất và khảo sát từ thực tế của học sinh:
    - Chờ xử lý (Pending): ${metrics.submissionsByStage.pending}
    - Đã phê duyệt (Approved): ${metrics.submissionsByStage.approved}
    - Cần bổ sung nguồn minh chứng (Needs Revision): ${metrics.submissionsByStage.needs_revision}
@@ -428,17 +428,17 @@ ${metrics.challengeSummary.byClass.map((c) => `  + ${c.grade}: ${c.attemptsCount
 III. CÁC THUẬT NGỮ MẠNG ĐƯỢC QUAN TÂM NHẤT
 ${metrics.topSearchedTerms.map((t, i) => `  ${i + 1}. "${t.word}" (${t.viewsCount} lượt xem, ${t.likesCount} yêu thích) - Chuẩn mực: ${t.schoolAppropriateness}`).join('\n')}
 
-IV. ĐẢM BẢO QUYỀN RIÊNG TƯ & AN TOÀN HỌC ĐƯỜNG (PRIVACY COMPLIANCE)
+IV. ĐẢM BẢO QUYỀN RIÊNG TƯ và AN TOÀN HỌC ĐƯỜNG (PRIVACY COMPLIANCE)
 - Tình trạng xử lý yêu cầu dữ liệu học sinh: Còn ${metrics.pendingDataRequests.length} yêu cầu đang chờ giải quyết.
 - Báo cáo tuân thủ nguyên tắc tuyệt đối không công khai mã học sinh, email trường cấp hay điểm số cá nhân cụ thể của bất kỳ học sinh nào mà chỉ hiển thị số liệu thống kê tổng hợp của tập thể lớp.
 
-V. KẾT LUẬN & ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
+V. KẾT LUẬN và ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
 - Ứng dụng NETWORD đã hỗ trợ học sinh THPT Long Hiệp phân biệt sâu sắc giữa ngôn ngữ giao tiếp thân mật và ngôn ngữ văn bản học thuật trang trọng.
 - Khuyến khích giáo viên bộ môn Ngữ văn tiếp tục sử dụng các dạng thử thách tình huống để rèn luyện thói quen "Hiểu đúng ngôn từ – Giao tiếp văn minh" trong không gian số.
 
                                               Long Hiệp, ngày ${dateStr}
                                                 GIÁO VIÊN BỘ MÔN NGỮ VĂN
-                                                    (Đã ký & duyệt)
+                                                    (Đã ký và duyệt)
                                                   Trầm Thanh Tuấn
 ================================================================================`;
   }
@@ -478,7 +478,7 @@ V. KẾT LUẬN & ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
     results.push({
       id: 2,
       code: 'AUDIT_02_AUTH_AND_SESSION',
-      title: 'Xác thực tài khoản, Đăng xuất & Quản lý phiên',
+      title: 'Xác thực tài khoản, Đăng xuất và Quản lý phiên',
       category: 'auth_session',
       status: 'passed',
       testedAt: now,
@@ -524,7 +524,7 @@ V. KẾT LUẬN & ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
     results.push({
       id: 5,
       code: 'AUDIT_05_NO_SECRET_PII_LEAK',
-      title: 'Bảo mật: Không lộ khóa bí mật & Không rò rỉ PII học sinh',
+      title: 'Bảo mật: Không lộ khóa bí mật và Không rò rỉ PII học sinh',
       category: 'privacy',
       status: isPiiSafe ? 'passed' : 'failed',
       testedAt: now,
@@ -554,7 +554,7 @@ V. KẾT LUẬN & ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
     results.push({
       id: 7,
       code: 'AUDIT_07_ANTI_TOXIC_XSS_SPAM',
-      title: 'Chống nội dung độc hại, lọc bạo lực ngôn từ & Ngăn chặn XSS',
+      title: 'Chống nội dung độc hại, lọc bạo lực ngôn từ và Ngăn chặn XSS',
       category: 'anti_abuse',
       status: 'passed',
       testedAt: now,
@@ -614,7 +614,7 @@ V. KẾT LUẬN & ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
       status: isDupEngineSound ? 'passed' : 'failed',
       testedAt: now,
       verificationDetails: 'Hàm normalizeTermClient loại bỏ dấu câu, chuyển chữ thường, chuẩn hóa dấu tiếng Việt Unicode NFD/NFC để phát hiện từ tương đồng.',
-      evidence: `Kiểm tra trùng từ "flex": ${dupCheck.isDuplicate ? 'ĐÃ PHÁT HIỆN CHÍNH XÁC' : 'Chưa phát hiện'}. Chuẩn hóa khoảng trắng & ký tự lạ: Hợp lệ.`,
+      evidence: `Kiểm tra trùng từ "flex": ${dupCheck.isDuplicate ? 'ĐÃ PHÁT HIỆN CHÍNH XÁC' : 'Chưa phát hiện'}. Chuẩn hóa khoảng trắng và ký tự lạ: Hợp lệ.`,
     });
     if (!isDupEngineSound) remainingIssues.push('Cơ chế phát hiện từ trùng cần tối ưu chuẩn hóa chuỗi');
 
@@ -635,7 +635,7 @@ V. KẾT LUẬN & ĐỀ XUẤT SƯ PHẠM CỦA THẦY TRẦM THANH TUẤN
     results.push({
       id: 11,
       code: 'AUDIT_11_BACKUP_RESTORE_AUDIT_LOGS',
-      title: 'Sao lưu dữ liệu, Khôi phục chuẩn & Sổ ghi vết thao tác Admin',
+      title: 'Sao lưu dữ liệu, Khôi phục chuẩn và Sổ ghi vết thao tác Admin',
       category: 'backup_audit',
       status: auditLogsCount > 0 ? 'passed' : 'failed',
       testedAt: now,
